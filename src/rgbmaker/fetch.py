@@ -146,7 +146,7 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
         string1 = save_fig(fig1, kind)
         plt.close()
         fetch_q.uri.append(
-            {'img2': 'data:image/png;base64,' + urllib.parse.quote(str(string1))})
+            {'img2': 'data:image/png;base64,' + urllib.parse.quote(string1)})
 
         #-------- Output for success -----#--#
         time_taken = perf_counter()-start
