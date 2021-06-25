@@ -10,7 +10,7 @@ setup(
     author='Avinash Kumar',
     author_email='avialxee@gmail.com',
     description='A python package which communicates to different astronomical services and fetches fits and numerical data.',
-    py_modules = ["rgbmaker", "cli", "fetch", "imgplt", "wrightCC"],
+    py_modules = ["rgbmaker"],
     package_dir={'':'src'},
     classifiers=["Programming Language :: Python :: 3",
                  "Programming Language :: Python :: 3.7",

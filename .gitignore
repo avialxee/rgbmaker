@@ -28,6 +28,8 @@ share/python-wheels/
 MANIFEST
 output/
 /.vscode/
+upload.sh
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -140,3 +142,4 @@ dmypy.json
 cython_debug/
 src/james_schobert.py
 .vscode/settings.json
+src/rgbmaker/james_schobert.py
