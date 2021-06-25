@@ -30,6 +30,7 @@ output/
 /.vscode/
 upload.sh
 requirements.txt
+src/rgbmaker/james_schobert.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -143,4 +144,3 @@ dmypy.json
 cython_debug/
 src/james_schobert.py
 .vscode/settings.json
-src/rgbmaker/james_schobert.py
