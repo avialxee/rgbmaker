@@ -16,8 +16,6 @@ setup(
                  "Programming Language :: Python :: 3.7",
                  "Programming Language :: Python :: 3.8",
                  "License :: OSI Approved :: BSD License",
-                 "Operating system :: OS Independent",
-                 "Development Status:: 3 - Alpha",
                  "Intended Audience :: Science/Research",
                  ],
     long_description=desc,
