@@ -1,4 +1,3 @@
+include *.in
 include *.rst
-
-# added by check-manifest
 recursive-include src *.py
