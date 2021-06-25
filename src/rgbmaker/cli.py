@@ -1,5 +1,5 @@
 import sys
-from fetch import cli
+from rgbmaker.fetch import cli
 
 
 if __name__ == "__main__":

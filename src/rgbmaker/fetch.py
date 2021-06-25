@@ -1,5 +1,5 @@
 from rgbmaker import RGBMaker as rgbmaker
-from imgplt import to_pixel, pl_RGB, overlayc, overlayo, sqrt
+from rgbmaker.imgplt import to_pixel, pl_RGB, overlayc, overlayo, sqrt
 
 from matplotlib import pyplot as plt
 from regions import PixCoord, EllipsePixelRegion
