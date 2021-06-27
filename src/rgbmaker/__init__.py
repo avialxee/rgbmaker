@@ -382,10 +382,6 @@ class RGBMaker:
         else:
             return "'{}' is not a valid survey. please choose one from {} or use any of '*' 'v' 'k' ".format(svy, base.keys())
 
-#class RADatHome(RGBMaker):
-#    def __init__(self, name, position, radius, archives, imagesopt, px):
-#        super().__init__(name=name, position=position, radius=radius, archives=archives, imagesopt=imagesopt, px=px)
-
 #ins = RGBMaker(position='speca', archives=2, imagesopt=3)
 #print(ins.submit_query())
 #print(ins.return_values())

@@ -138,8 +138,9 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
         #-------- plotting second plot -----#--#
         plt.ioff()
         fig1 = plt.figure(figsize=(20, 20))
-        pl_RGB(1, 2, 1, fetch_q.wcs, val['tgss']['data'], lvlc2, img3, fig1, name)
-        pl_RGB(1, 2, 2, fetch_q.wcs, val['tgss']['data'], lvlc2, img4, fig1, name)
+        pl_RGB(1, 2, 1, fetch_q.wcs, val['tgss']['data'], lvlc2, img3, fig1, name, pkind='iou')
+        pl_RGB(1, 2, 2, fetch_q.wcs,
+               val['tgss']['data'], lvlc2, img4, fig1, name, pkind='iou')
         plt.subplots_adjust(wspace=0.01, hspace=0.01)
 
         #-------- Saving second plot ------#--#
@@ -191,7 +192,7 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
         ax1.annotate("By " + str(name),(400-5*len(name),10),color='white')
         ax1.set_autoscale_on(False)
         #ax1.contour(tgss, lvlct, colors='white')
-        ax1.set_title('{}'.format('TGSS(GMRT)-NVSS(VLA)-DSS2R(DSS)'),
+        ax1.set_title('{}'.format(' TGSS(GMRT)-NVSS(VLA)-DSS2R(DSS)'),
                         y=1, pad=-16, color="white")
         
             #--- vizier access ---------------#--

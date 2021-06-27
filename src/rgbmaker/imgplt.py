@@ -186,7 +186,7 @@ def overlayo(ri, gi, bi, kind = 'IOU'):
   #img = np.stack([ri,gi,bi], axis=2)
   return img
 
-def pl_RGB(rows,columns,i,wcs,svy,lvlc,img,fig,name) :
+def pl_RGB(rows,columns,i,wcs,svy,lvlc,img,fig,name, pkind='ror') :
     """
     @input:
         rows    : (int) Total number of rows.
@@ -209,19 +209,21 @@ def pl_RGB(rows,columns,i,wcs,svy,lvlc,img,fig,name) :
     ax.set_autoscale_on(False)
 
     plt.contour(svy, lvlc, colors='white')
-    if i==1 :
-        ax.set_title("ROR-RGB-C: TGSS(GMRT)-DSS2-NVSS(VLA)-NVSS",
-                     y=1, pad=-16, color="white")
-        #ax.set_title("")
-    if i==2 :
-        ax.set_title("ROR-RGB-C: TGSS(GMRT)-DSS2-NVSS(VLA)-TGSS",
-                     y=1, pad=-16, color="white")
-    if i==3 :
-        ax.set_title("IOU-RGB-C: WISE(22)-DSS2(red)-GALEX(NUV)-TGSS",
-                     y=1, pad=-16, color="white")
-    if i==4 :
-        ax.set_title("Optical-RGB-C: DSS2(IR)-DSS2(Red)-DSS2(blue)-TGSS",
-                     y=1, pad=-16, color="white")
+    if pkind == 'ror':
+      if i==1 :
+          ax.set_title("ROR-RGB-C: TGSS(GMRT)-DSS2-NVSS(VLA)-NVSS",
+                      y=1, pad=-16, color="white")
+          #ax.set_title("")
+      if i==2 :
+          ax.set_title("ROR-RGB-C: TGSS(GMRT)-DSS2-NVSS(VLA)-TGSS",
+                      y=1, pad=-16, color="white")
+    elif pkind == 'iou':
+      if i==1 :
+          ax.set_title("IOU-RGB-C: WISE(22)-DSS2(red)-GALEX(NUV)-TGSS",
+                      y=1, pad=-16, color="white")
+      if i==2 :
+          ax.set_title("Optical-RGB-C: DSS2(IR)-DSS2(Red)-DSS2(blue)-TGSS",
+                      y=1, pad=-16, color="white")
 
 
 # ------------ arcsec to pixel conversion ----------------------------#-#
