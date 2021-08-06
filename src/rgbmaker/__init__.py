@@ -1,4 +1,5 @@
 #-- author: @avialxee ---#--#
+from http.client import RemoteDisconnected
 
 from astropy import coordinates, units as ut
 from astropy.wcs import WCS
@@ -64,6 +65,9 @@ class RGBMaker:
             self._getNVAS(self.archives)
             try:
                 hdu_d_list, error = self.getdd(_input_svys, _input_sampler)
+                if error == '502':
+                    self.status, self.info = 'warning', 'Skyview is down!'
+                    return self.throw_output()
             except:
                 if self.c :
                     if self.imagesopt == 1 or self.imagesopt == 2:
@@ -187,7 +191,7 @@ class RGBMaker:
             #print(_in_svys)
             try:
                 for ind in range(len(_in_svys)):
-                    imglt = self._get_imgl_pool(
+                    imglt, _error = self._get_imgl_pool(
                         [c, _in_svys[ind], r, result, ind,  _sam[ind]])
             except:
                 _error = "problem with survey: " + str(_in_svys)
@@ -207,11 +211,13 @@ class RGBMaker:
             imglr = skv.get_images(position=c, survey=svy, pixels=str(
                 self.px), radius=r, scaling="Linear", sampler=_sam, cache='True')
             queue[ind] = imglr
+        except RemoteDisconnected:
+            error = "502"
         except Exception as e:
             # --- if file not found/doesn't exist. Program will continue.
             print("{} not found: {}".format(svy, e))
             pass
-        return queue
+        return queue, error
 
     def _inp_sanitize(self):
         """
