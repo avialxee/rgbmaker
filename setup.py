@@ -5,7 +5,7 @@ with open("README.md", "r") as rdme:
 
 setup(
     name = 'rgbmaker',
-    version = '0.0.4.7.1',
+    version = '0.0.4.7.2',
     url='https://github.com/avialxee/rgbmaker',
     author='Avinash Kumar',
     author_email='avialxee@gmail.com',
@@ -21,7 +21,7 @@ setup(
     long_description=desc,
     long_description_content_type = "text/markdown",
     install_requires=["astropy>=4.2.1", "matplotlib>= 3.4.2",
-                      "regions", "numpy>= 1.20.3", "astroquery",
+                      "regions", "numpy>= 1.20.3", "astroquery","requests"
                       ],
     extras_require = {
         "dev" : ["pytest>=3.7",

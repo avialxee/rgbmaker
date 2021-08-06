@@ -1,6 +1,5 @@
 #-- author: @avialxee ---#--#
-from http.client import RemoteDisconnected
-
+import requests
 from astropy import coordinates, units as ut
 from astropy.wcs import WCS
 from astroquery.skyview import SkyView as skv
@@ -38,6 +37,7 @@ class RGBMaker:
         self.otext = []
         self.px = px
         self.name, self.c, self.r = self._inp_sanitize()
+        self.server_down = False
 
     def throw_output(self):
         """
@@ -53,30 +53,26 @@ class RGBMaker:
     def submit_query(self):
         """
         takes input of name, position, radius, choice of image and arhives 
-        to fetch FITS from SkyView and NVAS.        
+        to fetch FITS from Skyview and NVAS.        
         """
         ## ------------- Settings ---------------------
         np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
         #VerifyWarning by astropy for NVSS in imagesopt=2 
         simplefilter('ignore', category=UserWarning)
-        error=None
         _input_svys, _input_sampler = self._sanitize_rgb()
         self.name, self.c, self.r = self._inp_sanitize()
         if self.c is not None :
             self._getNVAS(self.archives)
             try:
                 hdu_d_list, error = self.getdd(_input_svys, _input_sampler)
-                                   
             except:
                 if self.c :
                     if self.imagesopt == 1 or self.imagesopt == 2:
                         self.status, self.info = 'info', 'error fetching data from skyview'
                     else:
                         self.status, self.info = 'info', 'No images to return'
-            arr_rgb = self._arr_rgb(_input_svys, hdu_d_list)
-            if error == '502': # overriding previous errors!
-                    self.status, self.info = 'warning', 'SkyView is down!' 
-            return arr_rgb
+                return self.throw_output()
+            return self._arr_rgb(_input_svys, hdu_d_list)
         else :
             self.status, self.info = 'warning', 'Please check Coordinates'
             return self.throw_output()
@@ -192,7 +188,7 @@ class RGBMaker:
             #print(_in_svys)
             try:
                 for ind in range(len(_in_svys)):
-                    imglt, _error = self._get_imgl_pool(
+                    imglt = self._get_imgl_pool(
                         [c, _in_svys[ind], r, result, ind,  _sam[ind]])
             except:
                 _error = "problem with survey: " + str(_in_svys)
@@ -202,7 +198,7 @@ class RGBMaker:
 
     def _get_imgl_pool(self, cals):
         """
-        Requests Fits from SkyView one by one. Written for multithread pooling.
+        Requests Fits from Skyview one by one. Written for multithread pooling.
         returns a list of hdul requested by _run_imgl
         """
         c, svy, r, queue, ind, _sam = cals
@@ -212,13 +208,14 @@ class RGBMaker:
             imglr = skv.get_images(position=c, survey=svy, pixels=str(
                 self.px), radius=r, scaling="Linear", sampler=_sam, cache='True')
             queue[ind] = imglr
-        except RemoteDisconnected:
-            error = "502"
+        except requests.exceptions.ConnectionError as e:
+            self.server_down = True
+            self.info = e
         except Exception as e:
             # --- if file not found/doesn't exist. Program will continue.
             print("{} not found: {}".format(svy, e))
             pass
-        return queue, error
+        return queue
 
     def _inp_sanitize(self):
         """
