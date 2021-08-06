@@ -53,29 +53,30 @@ class RGBMaker:
     def submit_query(self):
         """
         takes input of name, position, radius, choice of image and arhives 
-        to fetch FITS from Skyview and NVAS.        
+        to fetch FITS from SkyView and NVAS.        
         """
         ## ------------- Settings ---------------------
         np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
         #VerifyWarning by astropy for NVSS in imagesopt=2 
         simplefilter('ignore', category=UserWarning)
+        error=None
         _input_svys, _input_sampler = self._sanitize_rgb()
         self.name, self.c, self.r = self._inp_sanitize()
         if self.c is not None :
             self._getNVAS(self.archives)
             try:
                 hdu_d_list, error = self.getdd(_input_svys, _input_sampler)
-                if error == '502':
-                    self.status, self.info = 'warning', 'Skyview is down!'
-                    return self.throw_output()
+                                   
             except:
                 if self.c :
                     if self.imagesopt == 1 or self.imagesopt == 2:
                         self.status, self.info = 'info', 'error fetching data from skyview'
                     else:
                         self.status, self.info = 'info', 'No images to return'
-                return self.throw_output()
-            return self._arr_rgb(_input_svys, hdu_d_list)
+            arr_rgb = self._arr_rgb(_input_svys, hdu_d_list)
+            if error == '502': # overriding previous errors!
+                    self.status, self.info = 'warning', 'SkyView is down!' 
+            return arr_rgb
         else :
             self.status, self.info = 'warning', 'Please check Coordinates'
             return self.throw_output()
@@ -201,7 +202,7 @@ class RGBMaker:
 
     def _get_imgl_pool(self, cals):
         """
-        Requests Fits from Skyview one by one. Written for multithread pooling.
+        Requests Fits from SkyView one by one. Written for multithread pooling.
         returns a list of hdul requested by _run_imgl
         """
         c, svy, r, queue, ind, _sam = cals
