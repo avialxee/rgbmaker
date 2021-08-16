@@ -1,9 +1,10 @@
 from rgbmaker import RGBMaker as rgbmaker
 from rgbmaker.imgplt import to_pixel, pl_RGB, overlayc, overlayo, sqrt
+from rgbmaker.intemma_spidx import find_spidx
 
 from matplotlib import pyplot as plt
 from regions import PixCoord, EllipsePixelRegion
-from astropy.coordinates import Angle
+from astropy.coordinates import Angle, SkyCoord
 from astropy import units as ut
 from matplotlib.collections import PatchCollection
 
@@ -17,7 +18,7 @@ from os import path, makedirs
 
 import sys
 
-def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kind='base64'):
+def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kind='base64', spidx_file=None):
     """
     Usage
     ------
@@ -257,6 +258,18 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                 fetch_q.info = "catalog data missing"
             finally:
                 #ax1.legend(framealpha=0.0, labelcolor='white')
+                if spidx_file is not None:
+                    kwargs = dict(arrowprops=dict(arrowstyle="->", ec=".5",
+                                    relpos=(0.5, 0.5)),
+                    bbox=dict(boxstyle="round", ec="none", fc="w"))
+                    xi, yi, spidx = find_spidx(spidx_file, fetch_q.c)
+                    for ien in range(len(xi)):
+                        print(ien)
+                        Xi, Yi = fetch_q.wcs.world_to_pixel(SkyCoord(xi[ien]*ut.deg, yi[ien]*ut.deg)) 
+                        print(Xi,Yi)
+                        ax1.annotate(f'{spidx[ien]}', xy=(Xi, Yi),
+                                        xytext=(1, -40), textcoords="offset points",
+                                        ha="right", va="top", **kwargs)
 
                 #-------- single survey plot ---------#--#
                 dss2r = sqrt(dss2r, scale_min=np.percentile(
