@@ -200,8 +200,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
             ax1.set_title('{}'.format(' TGSS(GMRT)-NVSS(VLA)-DSS2R(DSS)'),
                             y=1, pad=-16, color="white")
             
-                #--- vizier access ---------------#--
-                # TODO : return table in output
+            #--- vizier access ---------------#--
+            # TODO : return table in output
             tgss_viz, nvss_viz = fetch_q.vz_query()
             if tgss_viz is not None:
                 tmaj, tmin, tPA, tcen = tgss_viz
