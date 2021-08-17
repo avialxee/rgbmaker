@@ -1,6 +1,6 @@
 from rgbmaker import RGBMaker as rgbmaker
 from rgbmaker.imgplt import to_pixel, pl_RGB, overlayc, overlayo, sqrt
-from rgbmaker.intemma_spidx import find_spidx
+from rgbmaker.tgss_spidx import find_spidx
 
 from matplotlib import pyplot as plt
 from regions import PixCoord, EllipsePixelRegion
@@ -262,11 +262,11 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                     kwargs = dict(arrowprops=dict(arrowstyle="->", ec=".5",
                                     relpos=(0.5, 0.5)),
                     bbox=dict(boxstyle="round", ec="none", fc="w"))
-                    xi, yi, spidx = find_spidx(spidx_file, fetch_q.c)
+                    xi, yi, spidx = find_spidx(spidx_file, fetch_q.c, fetch_q.r)
                     for ien in range(len(xi)):
                         print(ien)
                         Xi, Yi = fetch_q.wcs.world_to_pixel(SkyCoord(xi[ien]*ut.deg, yi[ien]*ut.deg)) 
-                        print(Xi,Yi)
+                        print(Xi,Yi, spidx)
                         ax1.annotate(f'{spidx[ien]}', xy=(Xi, Yi),
                                         xytext=(1, -40), textcoords="offset points",
                                         ha="right", va="top", **kwargs)
