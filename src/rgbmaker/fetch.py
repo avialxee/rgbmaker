@@ -204,9 +204,9 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
             # TODO : return table in output
             tgss_viz, nvss_viz = fetch_q.vz_query()
             if tgss_viz is not None:
-                tmaj, tmin, tPA, tcen = tgss_viz
+                tmaj, tmin, tPA, tcen, res_tgss = tgss_viz
             if nvss_viz is not None:
-                nmaj, nmin, nPA, ncen = nvss_viz
+                nmaj, nmin, nPA, ncen, res_nvss = nvss_viz
             try:
                 try:
                     patch1 = []
@@ -226,6 +226,7 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                         ax1.annotate(i+1, xy=(x,y),
                                     xytext=(0, 0), textcoords="offset points", color="magenta")
                                     #ha="right", va="top")#, **kwar)
+                        fetch_q.otext.append({f'TGSS-{i+1}': f'{res_tgss.tolist()[i]} {str(res_tgss.unit)}'})
                     tgss_catalog = PatchCollection(
                     patch1, edgecolor='magenta', facecolor='None')
                     
@@ -251,6 +252,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                         ax1.annotate(i+1, xy=(x, y),
                                     xytext=(0, 0), textcoords="offset points", color="cyan",
                                         ha="right", va="top")#, **kwar)
+                        
+                        fetch_q.otext.append({f'NVSS-{i+1}': f'{res_nvss.tolist()[i]} {str(res_nvss.unit)}'})
                     nvss_catalog = PatchCollection(
                         patch2, edgecolor='cyan', facecolor='None')
                     ax1.add_collection(nvss_catalog)                
@@ -264,9 +267,9 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                     bbox=dict(boxstyle="round", ec="none", fc="w"))
                     xi, yi, spidx = find_spidx(spidx_file, fetch_q.c, fetch_q.r)
                     for ien in range(len(xi)):
-                        print(ien)
+                        #print(ien)
                         Xi, Yi = fetch_q.wcs.world_to_pixel(SkyCoord(xi[ien]*ut.deg, yi[ien]*ut.deg)) 
-                        print(Xi,Yi, spidx)
+                        #print(Xi,Yi, spidx)
                         ax1.annotate(f'{spidx[ien]}', xy=(Xi, Yi),
                                         xytext=(1, -40), textcoords="offset points",
                                         ha="right", va="top", **kwargs)

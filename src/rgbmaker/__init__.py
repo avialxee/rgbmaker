@@ -293,13 +293,14 @@ class RGBMaker:
                     _tdec = _tviz[0]['DEJ2000']  # *ut.deg
                     _tMaj = _tviz[0]['Maj']
                     _tMin = _tviz[0]['Min']
+                    _res_tgss = _tviz[0]['Speak']
                     if "PA" in _tviz[0].columns:
                         _tPA = _tviz[0]["PA"]
                     else:
                         _tPA = 0
                     _center_tgss = coordinates.SkyCoord(ra=_tra, dec=_tdec)
                     _center_tgss_px = self.wcs.world_to_pixel(_center_tgss)
-                    _tgss_viz = [_tMaj, _tMin, _tPA, _center_tgss_px]
+                    _tgss_viz = [_tMaj, _tMin, _tPA, _center_tgss_px, _res_tgss]
                 finally:
                     _nviz = Vizier(columns=self.vzc_dict('nvss')).query_region(
                         self.c,self.r, catalog=self.vzb_dict('nvss'))
@@ -309,13 +310,14 @@ class RGBMaker:
                     #_ndecd = coordinates.Angle(_nviz[0]['DEJ2000'], unit=ut.deg).deg for scatter plots
                     _nMaj = _nviz[0]["MajAxis"]
                     _nMin = _nviz[0]["MinAxis"]
+                    _res_nvss = _nviz[0]['S1.4']
                     if "PA" in _nviz[0].columns:
                         _nPA = _nviz[0]["PA"]
                     else:
                         _nPA = 0
                     _center_nvss = coordinates.SkyCoord(ra=_nra, dec=_ndec)
                     _center_nvss_px = self.wcs.world_to_pixel(_center_nvss)
-                    _nvss_viz = [_nMaj, _nMin, _nPA, _center_nvss_px]
+                    _nvss_viz = [_nMaj, _nMin, _nPA, _center_nvss_px, _res_nvss]
             except:
                 self.info = " no data in catalog"
 
@@ -352,8 +354,8 @@ class RGBMaker:
         dictionary for NVSS, TGSS column using vizier
         TODO: add column for errors too
         """
-        columns = {'tgss': ['RAJ2000', 'DEJ2000', 'Maj', 'Min', 'PA'],
-                   'nvss': ['RAJ2000', 'DEJ2000', 'MajAxis', 'MinAxis', 'PA', '+NVSS']
+        columns = {'tgss': ['RAJ2000', 'DEJ2000', 'Maj', 'Min', 'PA', 'Speak'],
+                   'nvss': ['RAJ2000', 'DEJ2000', 'MajAxis', 'MinAxis', 'PA', '+NVSS', ' S1.4']
                    }
         if svy in columns:
             return columns[svy]
