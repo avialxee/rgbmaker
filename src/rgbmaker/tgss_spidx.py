@@ -30,7 +30,7 @@ def find_spidx(spidx_file,c, r):
     # ------- 
     ra, dec =c.ra.deg, c.dec.deg
     epsilon = r.value # expected r in astropy unit degree
-    print(f'spidx search is roughly within {epsilon*60} arcmin')
+    print(f'spidx search is roughly within {np.round((epsilon*60),3)} arcmin')
     i_spidx = np.where( np.abs(t.DEC-dec) < epsilon )
     true_spidx = np.where( np.abs(t.RA[i_spidx]-ra) < epsilon )
     xi,yi,spidx = t.RA[i_spidx][true_spidx], t.DEC[i_spidx][true_spidx], np.round(np.double(t.Spidx[i_spidx][true_spidx]),3)

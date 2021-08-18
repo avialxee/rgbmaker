@@ -110,6 +110,7 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
         return fetch_q.throw_output()
 
     else:
+        fetch_q.otext.append({'Target center': fetch_q.c.to_string('hmsdms')})
         if fetch_q.imagesopt == 1 and fetch_q.c:
             # --- using variables for readability -#--#
             tgss, dss2r, nvss, w22, gnuv, dss2i, dss2b = val['tgss']['data'], val[
@@ -135,8 +136,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
             plt.subplots_adjust(wspace=0.01, hspace=0.01)
 
             #-------- Saving first plot ------#--#
-            string = save_fig(fig, kind)
-            plt.close()
+            string = save_fig(plt, fig, kind)
+            
             fetch_q.uri.append(
                 {'img1': 'data:image/png;base64,' + urllib.parse.quote(string)})
 
@@ -149,8 +150,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
             plt.subplots_adjust(wspace=0.01, hspace=0.01)
 
             #-------- Saving second plot ------#--#
-            string1 = save_fig(fig1, kind)
-            plt.close()
+            string1 = save_fig(plt, fig1, kind)
+            
             fetch_q.uri.append(
                 {'img2': 'data:image/png;base64,' + urllib.parse.quote(string1)})
 
@@ -301,8 +302,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                 plt.subplots_adjust(wspace=0.01, hspace=0.01)
 
                 #-------- Saving final plot ------#--#
-                string1 = save_fig(fig, kind)
-                plt.close()
+                string1 = save_fig(plt, fig, kind)
+                
 
                 #-------- Output for success -----#--#
                 fetch_q.uri.append(
@@ -313,14 +314,19 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
 
         return fetch_q.throw_output()
 
-def save_fig(fig, kind='base64', output='output.jpg'):
+def save_fig(plt, fig, kind='base64', output='output.jpg'):
+    
     if kind == 'base64':
         buf = io.BytesIO()
         fig.savefig(buf, format='png', bbox_inches='tight',
                     transparent=True, pad_inches=0)
         buf.seek(0)
         string = base64.b64encode(buf.read())
+        plt.close()
         return string
+    elif kind == 'plot':
+        plt.show()
+        return 'plotted'
     else :
         if not path.exists('output'):
             makedirs('output')
@@ -339,6 +345,7 @@ def save_fig(fig, kind='base64', output='output.jpg'):
         fig.savefig(newPath, format=kind, bbox_inches='tight',
                     pad_inches=0)
         print("saved {}".format(newPath))
+        plt.close()
         return newPath
 
 

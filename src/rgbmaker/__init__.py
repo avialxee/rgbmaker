@@ -213,7 +213,7 @@ class RGBMaker:
             self.info = e
         except Exception as e:
             # --- if file not found/doesn't exist. Program will continue.
-            print("{} not found: {}".format(svy, e))
+            print("{} not found ".format(svy))
             pass
         return queue
 
@@ -293,7 +293,7 @@ class RGBMaker:
                     _tdec = _tviz[0]['DEJ2000']  # *ut.deg
                     _tMaj = _tviz[0]['Maj']
                     _tMin = _tviz[0]['Min']
-                    _res_tgss = _tviz[0]['Speak']
+                    _res_tgss = _tviz[0]['Stotal']
                     if "PA" in _tviz[0].columns:
                         _tPA = _tviz[0]["PA"]
                     else:
@@ -354,7 +354,7 @@ class RGBMaker:
         dictionary for NVSS, TGSS column using vizier
         TODO: add column for errors too
         """
-        columns = {'tgss': ['RAJ2000', 'DEJ2000', 'Maj', 'Min', 'PA', 'Speak'],
+        columns = {'tgss': ['RAJ2000', 'DEJ2000', 'Maj', 'Min', 'PA', 'Stotal'],
                    'nvss': ['RAJ2000', 'DEJ2000', 'MajAxis', 'MinAxis', 'PA', '+NVSS', ' S1.4']
                    }
         if svy in columns:
