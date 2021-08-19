@@ -20,20 +20,19 @@ def find_spidx(spidx_file,c, r):
         xi, yi, spidx : RA(unitless), DEC(unitless) and corrosponding Spectral Index values
                         that can be plotted on plot using wcs.world_to_pixel()
 
-    TODO: add capability/parameter to change radius (epsilon)
     """
 
     # ------- 
     spidx_hdul = fits.open(spidx_file)
-    t = spidx_hdul[1].data
+    RA, DEC, Spidx = spidx_hdul[0].data
     
     # ------- 
     ra, dec =c.ra.deg, c.dec.deg
     epsilon = r.value # expected r in astropy unit degree
     print(f'spidx search is roughly within {np.round((epsilon*60),3)} arcmin')
-    i_spidx = np.where( np.abs(t.DEC-dec) < epsilon )
-    true_spidx = np.where( np.abs(t.RA[i_spidx]-ra) < epsilon )
-    xi,yi,spidx = t.RA[i_spidx][true_spidx], t.DEC[i_spidx][true_spidx], np.round(np.double(t.Spidx[i_spidx][true_spidx]),3)
+    i_spidx = np.where( np.abs(DEC-dec) < epsilon )
+    true_spidx = np.where( np.abs(RA[i_spidx]-ra) < epsilon )
+    xi,yi,spidx = RA[i_spidx][true_spidx], DEC[i_spidx][true_spidx], np.round(np.double(Spidx[i_spidx][true_spidx]),3)
     if (not hasattr(spidx, '__len__')) and (not isinstance(spidx, str)) :
         spidx = [spidx]
         xi = [xi]
