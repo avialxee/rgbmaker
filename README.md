@@ -1,4 +1,4 @@
-# rgbmaker [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/avialxee/rgbmaker/HEAD?filepath=tutorial%2Frgbmaker-example1.ipynb)
+# rgbmaker
 A python package which communicates to different astronomical services and fetches fits and numerical data.
 
 # Developement
