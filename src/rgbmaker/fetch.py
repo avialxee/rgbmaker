@@ -1,5 +1,5 @@
 from rgbmaker import RGBMaker as rgbmaker
-from rgbmaker.imgplt import to_pixel, pl_RGB, overlayc, overlayo, sqrt
+from rgbmaker.imgplt import pl_RGB, to_pixel, pl_RGBC, overlayc, overlayo, sqrt
 from rgbmaker.tgss_spidx import find_spidx
 
 from matplotlib import pyplot as plt
@@ -18,7 +18,8 @@ from os import path, makedirs
 
 import sys
 
-def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kind='base64', spidx_file=None):
+def query(name="", position="", radius=float(0.12), archives=1, 
+                    imagesopt=2, kind='base64', spidx_file=None, px=480, annot=True):
     """
     Usage
     ------
@@ -101,6 +102,7 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                   radius=radius, archives=archives, imagesopt=imagesopt)
     name = fetch_q.name
     start = perf_counter()
+    fetch_q.px = px
     val = fetch_q.submit_query()
     
     level_contour=4
@@ -131,8 +133,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
             plt.ioff()
             fig = plt.figure(figsize=(20, 20))
 
-            pl_RGB(1, 2, 1, fetch_q.wcs, val['nvss']['data'], lvlc1, img1, fig, name)
-            pl_RGB(1, 2, 2, fetch_q.wcs, val['tgss']['data'], lvlc2, img2, fig, name)
+            pl_RGBC(1, 2, 1, fetch_q.wcs, val['nvss']['data'], lvlc1, img1, fig, name,annot=annot)
+            pl_RGBC(1, 2, 2, fetch_q.wcs, val['tgss']['data'], lvlc2, img2, fig, name,annot=annot)
             plt.subplots_adjust(wspace=0.01, hspace=0.01)
 
             #-------- Saving first plot ------#--#
@@ -144,9 +146,9 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
             #-------- plotting second plot -----#--#
             plt.ioff()
             fig1 = plt.figure(figsize=(20, 20))
-            pl_RGB(1, 2, 1, fetch_q.wcs, val['tgss']['data'], lvlc2, img3, fig1, name, pkind='iou')
-            pl_RGB(1, 2, 2, fetch_q.wcs,
-                val['tgss']['data'], lvlc2, img4, fig1, name, pkind='iou')
+            pl_RGBC(1, 2, 1, fetch_q.wcs, val['tgss']['data'], lvlc2, img3, fig1, name, pkind='iou',annot=annot)
+            pl_RGBC(1, 2, 2, fetch_q.wcs,
+                val['tgss']['data'], lvlc2, img4, fig1, name, pkind='iou',annot=annot)
             plt.subplots_adjust(wspace=0.01, hspace=0.01)
 
             #-------- Saving second plot ------#--#
@@ -187,35 +189,29 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
             #--- plotting --------------------#--#
             plt.ioff()
             fig = plt.figure(figsize=(20, 20))
-            
-            #--- RGBC plot -------------------#--#
-            ax1 = fig.add_subplot(1,2,1, projection=fetch_q.wcs) 
-            ax1.axis('off')
+            title = ' TGSS(GMRT)-NVSS(VLA)-DSS2R(DSS)'
             dss2r = sqrt(dss2r, scale_min=np.percentile(
                 np.unique(dss2r), 1.), scale_max=np.percentile(np.unique(dss2r), 100.))
-            ax1.imshow(dss2r, origin='lower', cmap='gist_gray')
-            ax1.annotate("#RADatHomeIndia",(10,10),color='white')
-            ax1.annotate("By " + str(name),(400-5*len(name),10),color='white')
-            ax1.set_autoscale_on(False)
-            #ax1.contour(tgss, lvlct, colors='white')
-            ax1.set_title('{}'.format(' TGSS(GMRT)-NVSS(VLA)-DSS2R(DSS)'),
-                            y=1, pad=-16, color="white")
+
+            #--- RGBC plot -------------------#--#
+            ax1 = fig.add_subplot(1,2,1, projection=fetch_q.wcs) 
+            pl_RGB(ax1, dss2r, title, name, annot)
             
             #--- vizier access ---------------#--
             # TODO : return table in output
             tgss_viz, nvss_viz = fetch_q.vz_query()
             if tgss_viz is not None:
-                tmaj, tmin, tPA, tcen, res_tgss = tgss_viz
+                tmaj, tmin, tPA, tcen, s_tgss, es_tgss = tgss_viz
             if nvss_viz is not None:
-                nmaj, nmin, nPA, ncen, res_nvss = nvss_viz
+                nmaj, nmin, nPA, ncen, s_nvss, es_nvss = nvss_viz
             try:
                 try:
                     patch1 = []
                     for i in range(len(tcen[0])):
                         x, y = tcen[0][i], tcen[1][i]
                         ce = PixCoord(x, y)
-                        a = to_pixel(tmaj[i], fetch_q.r)
-                        b = to_pixel(tmin[i], fetch_q.r)
+                        a = to_pixel(tmaj[i], fetch_q.r, px)
+                        b = to_pixel(tmin[i], fetch_q.r, px)
                         theta =Angle(tPA[i], 'deg') + 90*ut.deg
 
                         reg = EllipsePixelRegion(center=ce, width=a, height=b, angle=theta)
@@ -227,7 +223,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                         ax1.annotate(i+1, xy=(x,y),
                                     xytext=(0, 0), textcoords="offset points", color="magenta")
                                     #ha="right", va="top")#, **kwar)
-                        fetch_q.otext.append({f'TGSS-{i+1}': f'{res_tgss.tolist()[i]} {str(res_tgss.unit)}'})
+                        fetch_q.otext.append({f'S_TGSS-{i+1}': f'{s_tgss.tolist()[i]} {str(s_tgss.unit)}'})
+                        fetch_q.otext.append({f'S_TGSS_e-{i+1}': f'{np.round(es_tgss.tolist()[i],3)} {str(es_tgss.unit)}'})
                     tgss_catalog = PatchCollection(
                     patch1, edgecolor='magenta', facecolor='None')
                     
@@ -238,8 +235,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                     for i in range(len(ncen[0])):
                         x, y = ncen[0][i], ncen[1][i]
                         ce = PixCoord(x, y)
-                        a = to_pixel(nmaj[i], fetch_q.r)
-                        b = to_pixel(nmin[i], fetch_q.r)
+                        a = to_pixel(nmaj[i], fetch_q.r, px)
+                        b = to_pixel(nmin[i], fetch_q.r, px)
                         if nPA[i] != 0 and nPA[i] != '--':
                             theta = Angle(nPA[i], 'deg') + 90*ut.deg
                         else:
@@ -254,7 +251,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                                     xytext=(0, 0), textcoords="offset points", color="cyan",
                                         ha="right", va="top")#, **kwar)
                         
-                        fetch_q.otext.append({f'NVSS-{i+1}': f'{res_nvss.tolist()[i]} {str(res_nvss.unit)}'})
+                        fetch_q.otext.append({f'S_NVSS-{i+1}': f'{s_nvss.tolist()[i]} {str(s_nvss.unit)}'})
+                        fetch_q.otext.append({f'S_NVSS_e-{i+1}': f'{np.round(es_nvss.tolist()[i],3)} {str(es_nvss.unit)}'})
                     nvss_catalog = PatchCollection(
                         patch2, edgecolor='cyan', facecolor='None')
                     ax1.add_collection(nvss_catalog)                
@@ -279,12 +277,8 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                 dss2r = sqrt(dss2r, scale_min=np.percentile(
                     np.unique(dss2r), 1.), scale_max=np.percentile(np.unique(dss2r), 100.))
                 ax2 = fig.add_subplot(1, 2, 2, projection=fetch_q.wcs)
-                ax2.axis('off')
-                ax2.imshow(dss2r, origin='lower', cmap='gist_gray')
-                ax2.annotate("#RADatHomeIndia", (10, 10), color='white')
-                ax2.annotate("By " + str(name), (400-5*len(name), 10), color='white')
-                ax2.set_autoscale_on(False)
-
+                pl_RGB(ax2, dss2r, title='TGSS(GMRT)-NVSS(VLA)-FIRST(VLA)-DSS2R(DSS)', name=name, annot=annot)
+                
                 ax2.contour(nvss, lvlcn, colors='cyan')
                 ax2.contour(tgss, lvlct, colors='magenta')
                 ax2.contour(first, lvlcf, colors='yellow')
@@ -294,8 +288,6 @@ def query(name="", position="", radius=float(0.12), archives=1, imagesopt=2, kin
                 leg3 = mpatches.Patch(color='yellow', label='FIRST')
                 leg4 = mpatches.Patch(color='white', label='DSS2R')
                 
-                ax2.set_title('{}'.format('TGSS(GMRT)-NVSS(VLA)-FIRST(VLA)-DSS2R(DSS)'),
-                            y=1, pad=-16, color="white")
                 ax2.legend(handles=[leg1, leg2, leg3, leg4],
                         labelcolor='linecolor', framealpha=0.0,)
                 ax2.autoscale(False)

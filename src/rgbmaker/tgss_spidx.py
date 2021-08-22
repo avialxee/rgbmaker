@@ -35,7 +35,9 @@ def find_spidx(spidx_file,c, r):
     xi,yi,spidx = RA[i_spidx][true_spidx], DEC[i_spidx][true_spidx], np.round(np.double(Spidx[i_spidx][true_spidx]),3)
     if (not hasattr(spidx, '__len__')) and (not isinstance(spidx, str)) :
         spidx = [spidx]
-        xi = [xi]
-        yi = [yi]
+        if (not hasattr(xi, '__len__')) and (not isinstance(xi, str)) :
+            xi = [xi]
+        if (not hasattr(yi, '__len__')) and (not isinstance(yi, str)) :
+            yi = [yi]
     return xi, yi, spidx
     

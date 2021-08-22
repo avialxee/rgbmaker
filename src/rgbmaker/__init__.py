@@ -67,7 +67,7 @@ class RGBMaker:
                 hdu_d_list, error = self.getdd(_input_svys, _input_sampler)
             except:
                 if self.c :
-                    if self.imagesopt == 1 or self.imagesopt == 2:
+                    if self.imagesopt == 1 or self.imagesopt == 2 or self.imagesopt == 3:
                         self.status, self.info = 'info', 'error fetching data from skyview'
                     else:
                         self.status, self.info = 'info', 'No images to return'
@@ -123,7 +123,7 @@ class RGBMaker:
         """
         _rgbs = []
         _sampler = [None]
-        if (self.c is not None) and (self.imagesopt == 1 or self.imagesopt == 2):
+        if (self.c is not None) and (self.imagesopt == 1 or self.imagesopt == 2 or self.imagesopt == 3):
             if int(self.imagesopt) == 1 :
                 _rgb1 = self.rgb_dict('ror')
                 _rgb2 = self.rgb_dict('iou')
@@ -135,6 +135,11 @@ class RGBMaker:
                 _rgb1 = self.rgb_dict('single')
                 _rgb2 = self.rgb_dict('ror')
                 _rgbs = list(set(_rgb1['rgb']) | set(_rgb2['rgb']))
+
+            elif int(self.imagesopt) == 3 :
+                _rgb1 = self.rgb_dict('allwise')
+                _rgbs = list(set(_rgb1['rgb']))
+
             _sampler = np.array([None]*len(_rgbs))
             indices = np.where(np.array(_rgbs) == 'NVSS')
             
@@ -271,6 +276,11 @@ class RGBMaker:
             _g = cls.svy_dict('dss2r')
             _r = cls.svy_dict('first')
             return {'rgb': [_r,_g], 'sampler': [None]}
+        elif "allwise" in combination:
+            _r = cls.svy_dict('w22')
+            _g = cls.svy_dict('w4_6')
+            _b = cls.svy_dict('w3_4')
+            return {'rgb': [_r,_g, _b], 'sampler': [None, None, None]}
 
         return {'rgb': [_r, _g, _b], 'sampler': [None, None, _sampling_b]}
     
@@ -293,14 +303,15 @@ class RGBMaker:
                     _tdec = _tviz[0]['DEJ2000']  # *ut.deg
                     _tMaj = _tviz[0]['Maj']
                     _tMin = _tviz[0]['Min']
-                    _res_tgss = _tviz[0]['Stotal']
+                    _s_tgss = _tviz[0]['Stotal']
+                    _es_tgss = _tviz[0]['e_Stotal']
                     if "PA" in _tviz[0].columns:
                         _tPA = _tviz[0]["PA"]
                     else:
                         _tPA = 0
                     _center_tgss = coordinates.SkyCoord(ra=_tra, dec=_tdec)
                     _center_tgss_px = self.wcs.world_to_pixel(_center_tgss)
-                    _tgss_viz = [_tMaj, _tMin, _tPA, _center_tgss_px, _res_tgss]
+                    _tgss_viz = [_tMaj, _tMin, _tPA, _center_tgss_px, _s_tgss, _es_tgss]
                 finally:
                     _nviz = Vizier(columns=self.vzc_dict('nvss')).query_region(
                         self.c,self.r, catalog=self.vzb_dict('nvss'))
@@ -310,42 +321,39 @@ class RGBMaker:
                     #_ndecd = coordinates.Angle(_nviz[0]['DEJ2000'], unit=ut.deg).deg for scatter plots
                     _nMaj = _nviz[0]["MajAxis"]
                     _nMin = _nviz[0]["MinAxis"]
-                    _res_nvss = _nviz[0]['S1.4']
+                    _s_nvss = _nviz[0]['S1.4']
+                    _es_nvss = _nviz[0]['e_S1.4']
                     if "PA" in _nviz[0].columns:
                         _nPA = _nviz[0]["PA"]
                     else:
                         _nPA = 0
                     _center_nvss = coordinates.SkyCoord(ra=_nra, dec=_ndec)
                     _center_nvss_px = self.wcs.world_to_pixel(_center_nvss)
-                    _nvss_viz = [_nMaj, _nMin, _nPA, _center_nvss_px, _res_nvss]
+                    _nvss_viz = [_nMaj, _nMin, _nPA, _center_nvss_px, _s_nvss, _es_nvss]
             except:
                 self.info = " no data in catalog"
 
         return _tgss_viz, _nvss_viz
 
-    @staticmethod
-    def svy_dict(svy):
+    @classmethod
+    def svy_dict(cls, svy=None):
         """
         dictionary for surveys to be used to fetch FITS from skyview using astroquery.
         """
-        svys = {'tgss': 'TGSS ADR1',
-                'nvss': 'NVSS',
-                'first': 'VLA FIRST (1.4 GHz)',
-                'dss2r': 'DSS2 Red',
-                'dss2ir': 'DSS2 IR',
-                'dss2b': 'DSS2 Blue',
-                'w22': 'WISE 22',
-                'gnuv': 'GALEX Near UV'}
-        if svy in svys:
-            return svys[svy]
+        cls.svys = Surveys()
+        _dict = cls.svys.__dict__
+        if svy in _dict:
+            return _dict[svy]
+        if svy is None :
+            return cls.svys
         elif svy == '*':
-            return svys
+            return _dict
         elif svy == 'v':
-            return svys.values()
+            return _dict.values()
         elif svy == 'k':
-            return svys.keys()
+            return _dict.keys()
         else:
-            return "'{}' is not a valid survey. please choose one from {} or use any of '*' 'v' 'k' ".format(svy, svys.keys())
+            return "'{}' is not a valid survey. please choose one from {} or use any of '*' 'v' 'k' ".format(svy, _dict.keys())
 
     @staticmethod
     def vzc_dict(svy):
@@ -354,8 +362,8 @@ class RGBMaker:
         dictionary for NVSS, TGSS column using vizier
         TODO: add column for errors too
         """
-        columns = {'tgss': ['RAJ2000', 'DEJ2000', 'Maj', 'Min', 'PA', 'Stotal'],
-                   'nvss': ['RAJ2000', 'DEJ2000', 'MajAxis', 'MinAxis', 'PA', '+NVSS', ' S1.4']
+        columns = {'tgss': ['RAJ2000', 'DEJ2000', 'Maj', 'Min', 'PA', 'Stotal', 'e_Stotal'],
+                   'nvss': ['RAJ2000', 'DEJ2000', 'MajAxis', 'MinAxis', 'PA', '+NVSS', ' S1.4', 'e_S1.4']
                    }
         if svy in columns:
             return columns[svy]
@@ -388,7 +396,18 @@ class RGBMaker:
         else:
             return "'{}' is not a valid survey. please choose one from {} or use any of '*' 'v' 'k' ".format(svy, base.keys())
 
-#ins = RGBMaker(position='speca', archives=2, imagesopt=3)
-#print(ins.submit_query())
-#print(ins.return_values())
-##ins._sanitize_rgb()
+class Surveys(RGBMaker):
+    
+    def __init__(self) -> None:
+
+        self.__dict__ = {'tgss': 'TGSS ADR1',
+                'nvss': 'NVSS',
+                'first': 'VLA FIRST (1.4 GHz)',
+                'dss2r': 'DSS2 Red',
+                'dss2ir': 'DSS2 IR',
+                'dss2b': 'DSS2 Blue',
+                'w22': 'WISE 22',
+                'w12': 'WISE 12',
+                'w4_6': 'WISE 4.6',
+                'w3_4': 'WISE 3.4',
+                'gnuv': 'GALEX Near UV'}

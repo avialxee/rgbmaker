@@ -3,7 +3,7 @@ import math
 
 from astropy import units as ut
 from matplotlib import pyplot as plt
-
+from matplotlib.offsetbox import AnchoredText
 
 # -- below are slight modifications of 
 # original author: Min-Su Shin , University of Michigan ----- #-#
@@ -154,15 +154,91 @@ def normals(o) :
   else :
     return X_scaled
 
+def pl_powerlawsi(S,S_e,freq= [150, 1420], kind=None):
+  """
+  plot powerlaw of spectralindex
+
+  Inputs:
+  -------
+    S     : Total flux of TGSS and NVSS resp (list)
+    S_e   : error on Total flux of TGSS and NVSS resp (list)
+    freq  : frequency of TGSS and NVSS resp (list) (default = [150, 1420] )
+
+  Example:
+  --------
+  >>> S_e = [42.6, 2.6]
+  >>> S = [424.0, 60.0]
+  >>> pl_si(S,S_e)
+  """
+  
+  tgss = [np.float(S[0])]
+  nvss = [np.float(S[1])]
+  factor = freq[0]/freq[1]
+  si = np.round(np.log(np.divide(tgss, nvss)+1E-5)/np.log(factor+1E-5), 3)
+  si
+  plt.clf()
+  plt.ioff()
+  fig = plt.figure(figsize=(10, 5))
+  ax1 = fig.add_subplot(1, 2, 1)
+  ax1.errorbar(freq, S, yerr=S_e,
+            label ='Line1', color='red')
+  ax1.set_xscale('log')
+  ax1.set_yscale('log')
+  ax1.set_ylabel('Spectral flux (mJy)')
+  ax1.set_xticks([freq[0], freq[1]*0.4,freq[1]])
+  #ax1.set_yticks([S[0], S[1]*0.4, S[1]])
+  ax1.set_xlabel('frequency (MHz)')
+  #slope = (S[1]-S[0])/(freq[1]-freq[0])
+  anchored_text = AnchoredText(f'spectral index: {si[0]}', loc=1)
+  ax1.add_artist(anchored_text)
+  plt.show()
+  if (kind != 'plot') and (not None):
+    return plt, fig
+
+def pl_RGB(ax, img,title,name,annot=True):
+  """
+    Inputs:
+    --------
+        rows    : (int) Total number of rows.
+        columns : (int) Total number of columns.
+        i       : (int) current number of the cell.
+        wcs     : (astropy wcs) world coordinate system fetched from header of fits
+        img     : (np array) dimension = (px,px,3)
+        fig     : (maplotlib.pyplot.figure)
+        name    : (string) input name to be show on figure
+
+    Returns:
+    --------
+        adds plot to the figure.
+  """
+  #--- RGBC plot -------------------#--#
+  
+  ax.axis('off')
+  ax.imshow(img, origin='lower', cmap='gist_gray')
+  if annot:
+      ax.annotate("#RADatHomeIndia",(10,10),color='white')
+      ax.annotate("By " + str(name),(400-5*len(name),10),color='white')
+      ax.set_title('{}'.format(title),
+                    y=1, pad=-16, color="white")
+  ax.set_autoscale_on(False)
 
 def overlayo(ri, gi, bi, kind = 'IOU'):
   """
   Returns RGB stacked image.
-  @Input: 
+
+  Input: 
+  ------
     ri/gi/bi: (2-D array) survey 2-D array data in 
     kind  :   (string) either IOU or Optical
-  @return:
-    Img : (np array) dimension: (px,px,3)
+
+  Returns:
+  --------
+    Img : (nd array) dimension: (px,px,3)
+    scaling :
+        - IOU
+          - sqrt(w22), sqrt(dss2r), log(gnuv)(5 to 100% & factor =3.15) 
+        - Optical
+          - sqrt, sqrt, sqrt (min to max) 
   """
   if kind == 'IOU':
     ri = sqrt(ri, scale_min=np.percentile(np.unique(ri),1.), scale_max=np.percentile(np.unique(ri),100.))
@@ -186,30 +262,35 @@ def overlayo(ri, gi, bi, kind = 'IOU'):
   #img = np.stack([ri,gi,bi], axis=2)
   return img
 
-def pl_RGB(rows,columns,i,wcs,svy,lvlc,img,fig,name, pkind='ror') :
+def pl_RGBC(rows,columns,i,wcs,svy,lvlc,img,fig,name, pkind='ror',annot=True) :
     """
-    @input:
+    Inputs:
+    --------
         rows    : (int) Total number of rows.
         columns : (int) Total number of columns.
         i       : (int) current number of the cell.
         wcs     : (astropy wcs) world coordinate system fetched from header of fits
-        svy     : (np array) 2-D array
+        svy     : (np array) 2-D array survey for contours.
         lvlc    : (list) list of float
         img     : (np array) dimension = (px,px,3)
         fig     : (maplotlib.pyplot.figure)
         name    : (string) input name to be show on figure
-    @return:
-        None
+        pkind   : (str) ror/iou; default='ror'
+
+    Returns:
+    --------
+        plots the ror/iou figure.
     """
     ax = fig.add_subplot(rows, columns, i, projection=wcs)
     ax.axis( 'off')
     ax.imshow(img, origin='lower', interpolation='nearest')
-    ax.annotate("#RADatHomeIndia",(10,10),color='white')
-    ax.annotate("By " + str(name),(400-5*len(name),10),color='white')
+    if annot:
+      ax.annotate("#RADatHomeIndia",(10,10),color='white')
+      ax.annotate("By " + str(name),((400-5*len(name)),10),color='white')
     ax.set_autoscale_on(False)
 
     plt.contour(svy, lvlc, colors='white')
-    if pkind == 'ror':
+    if pkind == 'ror' and annot:
       if i==1 :
           ax.set_title("ROR-RGB-C: TGSS(GMRT)-DSS2-NVSS(VLA)-NVSS",
                       y=1, pad=-16, color="white")
@@ -217,7 +298,7 @@ def pl_RGB(rows,columns,i,wcs,svy,lvlc,img,fig,name, pkind='ror') :
       if i==2 :
           ax.set_title("ROR-RGB-C: TGSS(GMRT)-DSS2-NVSS(VLA)-TGSS",
                       y=1, pad=-16, color="white")
-    elif pkind == 'iou':
+    elif pkind == 'iou' and annot:
       if i==1 :
           ax.set_title("IOU-RGB-C: WISE(22)-DSS2(red)-GALEX(NUV)-TGSS",
                       y=1, pad=-16, color="white")
@@ -240,4 +321,3 @@ def to_pixel(unit_inarcsec, r, px = 480):
     """
     nvss_px_scale = px/(r)
     return np.round(((unit_inarcsec/3600) * ut.deg * nvss_px_scale), 2).value
-
