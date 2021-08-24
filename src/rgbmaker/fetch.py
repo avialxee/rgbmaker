@@ -120,14 +120,14 @@ def query(name="", position="", radius=float(0.12), archives=1,
                     'gnuv']['data'], val['dss2ir']['data'], val['dss2b']['data']
 
             # --- creating images ----------#--#
-            img1, lvlc1 = overlayc(tgss, dss2r, nvss, nvss, level_contour, 0.0015)
-            img2, lvlc2 = overlayc(tgss, dss2r, nvss, tgss, level_contour, 0.015)
+            img1, lvlc1 = overlayc(tgss, dss2r, nvss, nvss, level_contour, 0.0015) # NVSS
+            img2, lvlc2 = overlayc(tgss, dss2r, nvss, tgss, level_contour, 0.015) # TGSS
             img3 = overlayo(w22,dss2r,gnuv, kind='IOU')
             img4 = overlayo(dss2i,dss2r,dss2b, kind='Optical')
             if lvlc1 is not None:
-                fetch_q.otext.append({'TGSS contour ': (str(np.round(lvlc1, 3)))})
+                fetch_q.otext.append({'TGSS contour ': (str(np.round(lvlc2, 3)))}) # TGSS
             if lvlc2 is not None:
-                fetch_q.otext.append({'NVSS contour ': (str(np.round(lvlc2, 4)))})
+                fetch_q.otext.append({'NVSS contour ': (str(np.round(lvlc1, 4)))}) # NVSS
 
             # -------- plotting first plot -------------#--#
             plt.ioff()

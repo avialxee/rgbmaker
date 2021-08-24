@@ -5,7 +5,7 @@ with open("README.md", "r") as rdme:
 
 setup(
     name = 'rgbmaker',
-    version = '0.0.4.7.8',
+    version = '0.0.4.7.9',
     url='https://github.com/avialxee/rgbmaker',
     author='Avinash Kumar',
     author_email='avialxee@gmail.com',
