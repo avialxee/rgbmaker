@@ -1,4 +1,4 @@
-# rgbmaker
+# rgbmaker  [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)  [![PyPI version](https://badge.fury.io/py/rgbmaker.svg)](https://badge.fury.io/py/rgbmaker)
 A python package which communicates to different astronomical services and fetches fits and numerical data.
 
 # Developement
