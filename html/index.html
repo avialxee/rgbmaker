@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to rgbmaker’s documentation! &mdash; rgbmaker 0.0.4.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> rgbmaker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to rgbmaker’s documentation!</a></li>
+<li><a class="reference internal" href="#module-rgbmaker.fetch.query">rgbmaker query()</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#from-radathome-fetch-import-query">&gt;&gt;&gt;&gt; from radathome.fetch import query</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#form-fields">Form Fields:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-rgbmaker">rgbmaker class RGBMaker()</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">rgbmaker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to rgbmaker’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-rgbmaker-s-documentation">
+<h1>Welcome to rgbmaker’s documentation!<a class="headerlink" href="#welcome-to-rgbmaker-s-documentation" title="Permalink to this headline"></a></h1>
+</section>
+<hr class="docutils" />
+<section id="module-rgbmaker.fetch.query">
+<span id="rgbmaker-query"></span><h1>rgbmaker query()<a class="headerlink" href="#module-rgbmaker.fetch.query" title="Permalink to this headline"></a></h1>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<section id="from-radathome-fetch-import-query">
+<h3>&gt;&gt;&gt;&gt; from radathome.fetch import query<a class="headerlink" href="#from-radathome-fetch-import-query" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="form-fields">
+<h2>Form Fields:<a class="headerlink" href="#form-fields" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><blockquote>
+<div><p>Your name will be displayed on the image enabling mentors, professors,
+fellow students to be able to recognize your work. Credit is important!</p>
+</div></blockquote>
+<blockquote>
+<div><p>The object name or the coordinates of the object in the FK5 (J2000) system.
+Ex: “14 09 48.86 -03 02 32.6”, M87, NGC1243, without quotes.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The size of the image in degrees, this size will be used for the
+[field of view](<a class="reference external" href="https://en.wikipedia.org/wiki/Field_of_view">https://en.wikipedia.org/wiki/Field_of_view</a>) in the resultant image.
+For reference, in the night sky, the moon is about 0.52 degrees across.</p>
+</div></blockquote>
+<blockquote>
+<div><p>This dropdown gives you a choice of the composite images you want to create.</p>
+<blockquote>
+<div><p>_This option returns four images._</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>There are two [ROR](#what-is-iou-ror-and-rgb)</dt><dd><p>(Radio (TGSS ADR1) - Optical (DSS2Red) - Radio (NVSS)) images.
+One with TGSS Contours and another with NVSS Contours.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>One with TGSS Contours and another with NVSS Contours.</dt><dd><p>One with TGSS Contours and another with NVSS Contours.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt>The third image is an [IOU](#what-is-iou-ror-and-rgb)</dt><dd><p>_(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))_</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>_(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))_</dt><dd><p>_(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))_
+with TGSS Contours.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="3">
+<li><dl class="simple">
+<dt>The final RGB image is an optical image with</dt><dd><p>_(DSS2IR - DSS2Red - DSS2Blue)_</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>_(DSS2IR - DSS2Red - DSS2Blue)_</dt><dd><p>_(DSS2IR - DSS2Red - DSS2Blue)_
+with TGGSS Contours.</p>
+</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div><p>_This option returns two images._</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>The first is a [ROR](#what-is-iou-ror-and-rgb) Image with TGSS contours.</dt><dd><p>The various symbol seen on the image is the [catalog](<a class="reference external" href="https://en.wikipedia.org/wiki/Astronomical_catalog">https://en.wikipedia.org/wiki/Astronomical_catalog</a>)</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>The various symbol seen on the image is the [catalog](<a class="reference external" href="https://en.wikipedia.org/wiki/Astronomical_catalog">https://en.wikipedia.org/wiki/Astronomical_catalog</a>)</dt><dd><p>The various symbol seen on the image is the [catalog](<a class="reference external" href="https://en.wikipedia.org/wiki/Astronomical_catalog">https://en.wikipedia.org/wiki/Astronomical_catalog</a>)
+data of the respective survey.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt>The second image is a composite image with DSS2Red background and contours of various</dt><dd><p>radio surveys like TGSS, NVSS, and VLA First (if available).</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<blockquote>
+<div><p>This dropdown currently offers access to the NVAS image archive. Selecting this option will
+return the top 5 results from NVAS (if exists). These can be downloaded as .imfits files (open with DS9)
+by using save as an option when right-clicked.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+<section id="module-rgbmaker">
+<span id="rgbmaker-class-rgbmaker"></span><h1>rgbmaker class RGBMaker()<a class="headerlink" href="#module-rgbmaker" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rgbmaker.</span></span><span class="sig-name descname"><span class="pre">RGBMaker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imagesopt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">px</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">480</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.getdd">
+<span class="sig-name descname"><span class="pre">getdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_svys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.getdd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.getdd" title="Permalink to this definition"></a></dt>
+<dd><p>takes input svys (array) and fetches fits from skyview using astroquery.
+returns [list([hdulist[0].data, hdulist[0].header]), error]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.rgb_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">rgb_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combination</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.rgb_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.rgb_dict" title="Permalink to this definition"></a></dt>
+<dd><p>dictionary for creating RGB images and single survey images using svy_dict().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.submit_query">
+<span class="sig-name descname"><span class="pre">submit_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.submit_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.submit_query" title="Permalink to this definition"></a></dt>
+<dd><p>takes input of name, position, radius, choice of image and arhives
+to fetch FITS from Skyview and NVAS.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.svy_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">svy_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.svy_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.svy_dict" title="Permalink to this definition"></a></dt>
+<dd><p>dictionary for surveys to be used to fetch FITS from skyview using astroquery.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.throw_output">
+<span class="sig-name descname"><span class="pre">throw_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.throw_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.throw_output" title="Permalink to this definition"></a></dt>
+<dd><p>returns output showing status of output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.vz_query">
+<span class="sig-name descname"><span class="pre">vz_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.vz_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.vz_query" title="Permalink to this definition"></a></dt>
+<dd><p>query from vizier for NVSS and TGSS.
+&#64;returns:</p>
+<blockquote>
+<div><p>MajorAxis (unitless) (Vizier : arcsec),
+MinorAxis (unitless) (Vizier : arcsec),
+PA  (unitless) (Vizier : deg),
+pixel based position (single arguement)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.vzb_dict">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vzb_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.vzb_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.vzb_dict" title="Permalink to this definition"></a></dt>
+<dd><p>vizier base dictionary
+dictionary for NVSS, TGSS catalog using vizier</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.vzc_dict">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vzc_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.vzc_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.vzc_dict" title="Permalink to this definition"></a></dt>
+<dd><p>vizier column dictionary
+dictionary for NVSS, TGSS column using vizier
+TODO: add column for errors too</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rgbmaker.Surveys">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rgbmaker.</span></span><span class="sig-name descname"><span class="pre">Surveys</span></span><a class="reference internal" href="_modules/rgbmaker.html#Surveys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.Surveys" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#rgbmaker.RGBMaker" title="rgbmaker.RGBMaker"><code class="xref py py-class docutils literal notranslate"><span class="pre">rgbmaker.RGBMaker</span></code></a></p>
+</dd></dl>
+
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, avialxee.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
