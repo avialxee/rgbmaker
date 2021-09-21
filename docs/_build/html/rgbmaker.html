@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rgbmaker package &mdash; rgbmaker 0.0.4.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> rgbmaker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">rgbmaker package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-rgbmaker.fetch">rgbmaker.fetch module</a></li>
+<li><a class="reference internal" href="#module-rgbmaker.imgplt">rgbmaker.imgplt module</a></li>
+<li><a class="reference internal" href="#module-rgbmaker.tgss_spidx">rgbmaker.tgss_spidx module</a></li>
+<li><a class="reference internal" href="#module-rgbmaker.wrightCC">rgbmaker.wrightCC module</a></li>
+<li><a class="reference internal" href="#module-rgbmaker">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rgbmaker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>rgbmaker package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rgbmaker.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rgbmaker-package">
+<h1>rgbmaker package<a class="headerlink" href="#rgbmaker-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-rgbmaker.fetch">
+<span id="rgbmaker-fetch-module"></span><h2>rgbmaker.fetch module<a class="headerlink" href="#module-rgbmaker.fetch" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.fetch.cli">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.fetch.</span></span><span class="sig-name descname"><span class="pre">cli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/fetch.html#cli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.fetch.cli" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.fetch.help_o">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.fetch.</span></span><span class="sig-name descname"><span class="pre">help_o</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/fetch.html#help_o"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.fetch.help_o" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.fetch.query">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.fetch.</span></span><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imagesopt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base64'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spidx_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">px</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">480</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/fetch.html#query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.fetch.query" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><blockquote>
+<div><p>Your name will be displayed on the image enabling mentors, professors,
+fellow students to be able to recognize your work. Credit is important!</p>
+</div></blockquote>
+<blockquote>
+<div><p>The object name or the coordinates of the object in the FK5 (J2000) system.
+Ex: “14 09 48.86 -03 02 32.6”, M87, NGC1243, without quotes.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The size of the image in degrees, this size will be used for the
+[field of view](<a class="reference external" href="https://en.wikipedia.org/wiki/Field_of_view">https://en.wikipedia.org/wiki/Field_of_view</a>) in the resultant image.
+For reference, in the night sky, the moon is about 0.52 degrees across.</p>
+</div></blockquote>
+<blockquote>
+<div><p>This dropdown gives you a choice of the composite images you want to create.</p>
+<blockquote>
+<div><p>_This option returns four images._</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>There are two [ROR](#what-is-iou-ror-and-rgb)</dt><dd><p>(Radio (TGSS ADR1) - Optical (DSS2Red) - Radio (NVSS)) images.
+One with TGSS Contours and another with NVSS Contours.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>One with TGSS Contours and another with NVSS Contours.</dt><dd><p>One with TGSS Contours and another with NVSS Contours.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt>The third image is an [IOU](#what-is-iou-ror-and-rgb)</dt><dd><p>_(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))_</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>_(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))_</dt><dd><p>_(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))_
+with TGSS Contours.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="3">
+<li><dl class="simple">
+<dt>The final RGB image is an optical image with</dt><dd><p>_(DSS2IR - DSS2Red - DSS2Blue)_</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>_(DSS2IR - DSS2Red - DSS2Blue)_</dt><dd><p>_(DSS2IR - DSS2Red - DSS2Blue)_
+with TGGSS Contours.</p>
+</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div><p>_This option returns two images._</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>The first is a [ROR](#what-is-iou-ror-and-rgb) Image with TGSS contours.</dt><dd><p>The various symbol seen on the image is the [catalog](<a class="reference external" href="https://en.wikipedia.org/wiki/Astronomical_catalog">https://en.wikipedia.org/wiki/Astronomical_catalog</a>)</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>The various symbol seen on the image is the [catalog](<a class="reference external" href="https://en.wikipedia.org/wiki/Astronomical_catalog">https://en.wikipedia.org/wiki/Astronomical_catalog</a>)</dt><dd><p>The various symbol seen on the image is the [catalog](<a class="reference external" href="https://en.wikipedia.org/wiki/Astronomical_catalog">https://en.wikipedia.org/wiki/Astronomical_catalog</a>)
+data of the respective survey.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt>The second image is a composite image with DSS2Red background and contours of various</dt><dd><p>radio surveys like TGSS, NVSS, and VLA First (if available).</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<blockquote>
+<div><p>This dropdown currently offers access to the NVAS image archive. Selecting this option will
+return the top 5 results from NVAS (if exists). These can be downloaded as .imfits files (open with DS9)
+by using save as an option when right-clicked.</p>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.fetch.save_fig">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.fetch.</span></span><span class="sig-name descname"><span class="pre">save_fig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base64'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'output.jpg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/fetch.html#save_fig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.fetch.save_fig" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-rgbmaker.imgplt">
+<span id="rgbmaker-imgplt-module"></span><h2>rgbmaker.imgplt module<a class="headerlink" href="#module-rgbmaker.imgplt" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.linear">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#linear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.linear" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Performs linear scaling of the input numpy array.</dt><dd><p>&#64;type inputArray: numpy array
+&#64;param inputArray: image data array
+&#64;type scale_min: float
+&#64;param scale_min: minimum data value
+&#64;type scale_max: float
+&#64;param scale_max: maximum data value
+&#64;rtype: numpy array
+&#64;return: image data array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.log">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.log" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Performs log10 scaling of the input numpy array.</dt><dd><p>&#64;type inputArray: numpy array
+&#64;param inputArray: image data array
+&#64;type scale_min: float
+&#64;param scale_min: minimum data value
+&#64;type scale_max: float
+&#64;param scale_max: maximum data value
+&#64;rtype: numpy array
+&#64;return: image data array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.normals">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">normals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#normals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.normals" title="Permalink to this definition"></a></dt>
+<dd><p>normalizing before scaling,
+&#64;input:   (2D array) input survey
+&#64;return:  (2D array) dimension same as input survey</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.overlayc">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">overlayc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lvl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#overlayc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.overlayc" title="Permalink to this definition"></a></dt>
+<dd><p>Returns RGB stacked image and contour levels to be overlayed.
+&#64;input:</p>
+<blockquote>
+<div><p>r/g/b:(2-D array) survey 2-D array data in
+c :   (2-D array) survey data for contour
+lvl : (int) number of levels to draw
+cmin: (float) minimum value selected for the contour</p>
+</div></blockquote>
+<dl class="simple">
+<dt>&#64;return:</dt><dd><p>Img : (np array) dimension: (px,px,3)
+lvlc: (list) dimension: None or of length len(lvl)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.overlayo">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">overlayo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IOU'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#overlayo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.overlayo" title="Permalink to this definition"></a></dt>
+<dd><p>Returns RGB stacked image.</p>
+<blockquote>
+<div><p>ri/gi/bi: (2-D array) survey 2-D array data in
+kind  :   (string) either IOU or Optical</p>
+</div></blockquote>
+<blockquote>
+<div><p>Img : (nd array) dimension: (px,px,3)
+scaling :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>IOU
+- sqrt(w22), sqrt(dss2r), log(gnuv)(5 to 100% &amp; factor =3.15)</p></li>
+<li><p>Optical
+- sqrt, sqrt, sqrt (min to max)</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.pl_RGB">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">pl_RGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#pl_RGB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.pl_RGB" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>rows    : (int) Total number of rows.
+columns : (int) Total number of columns.
+i       : (int) current number of the cell.
+wcs     : (astropy wcs) world coordinate system fetched from header of fits
+img     : (np array) dimension = (px,px,3)
+fig     : (maplotlib.pyplot.figure)
+name    : (string) input name to be show on figure</p>
+</div></blockquote>
+<blockquote>
+<div><p>adds plot to the figure.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.pl_RGBC">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">pl_RGBC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wcs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lvlc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pkind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ror'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#pl_RGBC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.pl_RGBC" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>rows    : (int) Total number of rows.
+columns : (int) Total number of columns.
+i       : (int) current number of the cell.
+wcs     : (astropy wcs) world coordinate system fetched from header of fits
+svy     : (np array) 2-D array survey for contours.
+lvlc    : (list) list of float
+img     : (np array) dimension = (px,px,3)
+fig     : (maplotlib.pyplot.figure)
+name    : (string) input name to be show on figure
+pkind   : (str) ror/iou; default=’ror’</p>
+</div></blockquote>
+<blockquote>
+<div><p>plots the ror/iou figure.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.pl_powerlawsi">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">pl_powerlawsi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S_e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[150,</span> <span class="pre">1420]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#pl_powerlawsi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.pl_powerlawsi" title="Permalink to this definition"></a></dt>
+<dd><p>plot powerlaw of spectralindex</p>
+<blockquote>
+<div><p>S     : Total flux of TGSS and NVSS resp (list)
+S_e   : error on Total flux of TGSS and NVSS resp (list)
+freq  : frequency of TGSS and NVSS resp (list) (default = [150, 1420] )</p>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">S_e</span> <span class="o">=</span> <span class="p">[</span><span class="mf">42.6</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="p">[</span><span class="mf">424.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl_si</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">S_e</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.sqrt">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#sqrt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.sqrt" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Performs sqrt scaling of the input numpy array.</dt><dd><p>&#64;type inputArray: numpy array
+&#64;param inputArray: image data array
+&#64;type scale_min: float
+&#64;param scale_min: minimum data value
+&#64;type scale_max: float
+&#64;param scale_max: maximum data value
+&#64;rtype: numpy array
+&#64;return: image data array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.imgplt.to_pixel">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.imgplt.</span></span><span class="sig-name descname"><span class="pre">to_pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit_inarcsec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">px</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">480</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/imgplt.html#to_pixel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.imgplt.to_pixel" title="Permalink to this definition"></a></dt>
+<dd><p>convert arcsec into pixel.
+&#64;input:</p>
+<blockquote>
+<div><p>unit_inarcsec: input magnitude (unitless) data in arcsec
+r   :   length of square image in deg
+px  :   total pixels in one length</p>
+</div></blockquote>
+<dl class="simple">
+<dt>&#64;return:</dt><dd><p>input data converted to be used onto pixel length rounded upto 2 decimal places.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-rgbmaker.tgss_spidx">
+<span id="rgbmaker-tgss-spidx-module"></span><h2>rgbmaker.tgss_spidx module<a class="headerlink" href="#module-rgbmaker.tgss_spidx" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.tgss_spidx.find_spidx">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.tgss_spidx.</span></span><span class="sig-name descname"><span class="pre">find_spidx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spidx_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/tgss_spidx.html#find_spidx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.tgss_spidx.find_spidx" title="Permalink to this definition"></a></dt>
+<dd><p>bash:
+&gt;&gt;&gt; find_spidx(‘spidxcat_v1.1b.fits’, c)
+&gt;&gt;&gt; [212.52272467 212.43975207 212.47209909 212.46530053 212.39858977</p>
+<blockquote>
+<div><p>212.40165324],[-3.11523434 -3.03256748 -3.07505213 -3.0517433  -2.9848956  -2.96384673],
+[-0.842 -0.488 -0.872 -0.308 -0.615 -0.471]</p>
+</div></blockquote>
+<blockquote>
+<div><p>spidx_file  : spidx fits file (approx 111 MB) with Fitsrec type table in hdul[1]
+c           : Astropy SkyCoord type RA, DEC (astropy unit - degrees)
+radius (r)  : Astropy unit in degree for the sky angular size.</p>
+</div></blockquote>
+<blockquote>
+<div><dl class="simple">
+<dt>xi, yi, spidx<span class="classifier">RA(unitless), DEC(unitless) and corrosponding Spectral Index values</span></dt><dd><p>that can be plotted on plot using wcs.world_to_pixel()</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</section>
+<section id="module-rgbmaker.wrightCC">
+<span id="rgbmaker-wrightcc-module"></span><h2>rgbmaker.wrightCC module<a class="headerlink" href="#module-rgbmaker.wrightCC" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rgbmaker.wrightCC.cosmo_calc">
+<span class="sig-prename descclassname"><span class="pre">rgbmaker.wrightCC.</span></span><span class="sig-name descname"><span class="pre">cosmo_calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">69.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WM</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.286</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">univ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker/wrightCC.html#cosmo_calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.wrightCC.cosmo_calc" title="Permalink to this definition"></a></dt>
+<dd><p>Cosmology calculator ala Ned Wright (www.astro.ucla.edu/~wright)
+input values = redshift, Ho, Omega_m, Omega_vac
+ouput values = age at z, distance in Mpc, kpc/arcsec, apparent to abs mag conversion
+Options:</p>
+<blockquote>
+<div><p>-h for this message
+-v for verbose response
+H0 = 75                         # Hubble constant
+WM = 0.3                        # Omega(matter)</p>
+</div></blockquote>
+</dd></dl>
+
+</section>
+<section id="module-rgbmaker">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rgbmaker" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rgbmaker.</span></span><span class="sig-name descname"><span class="pre">RGBMaker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imagesopt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">px</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">480</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.getdd">
+<span class="sig-name descname"><span class="pre">getdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_svys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.getdd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.getdd" title="Permalink to this definition"></a></dt>
+<dd><p>takes input svys (array) and fetches fits from skyview using astroquery.
+returns [list([hdulist[0].data, hdulist[0].header]), error]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.rgb_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">rgb_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combination</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.rgb_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.rgb_dict" title="Permalink to this definition"></a></dt>
+<dd><p>dictionary for creating RGB images and single survey images using svy_dict().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.submit_query">
+<span class="sig-name descname"><span class="pre">submit_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.submit_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.submit_query" title="Permalink to this definition"></a></dt>
+<dd><p>takes input of name, position, radius, choice of image and arhives
+to fetch FITS from Skyview and NVAS.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.svy_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">svy_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.svy_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.svy_dict" title="Permalink to this definition"></a></dt>
+<dd><p>dictionary for surveys to be used to fetch FITS from skyview using astroquery.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.throw_output">
+<span class="sig-name descname"><span class="pre">throw_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.throw_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.throw_output" title="Permalink to this definition"></a></dt>
+<dd><p>returns output showing status of output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.vz_query">
+<span class="sig-name descname"><span class="pre">vz_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.vz_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.vz_query" title="Permalink to this definition"></a></dt>
+<dd><p>query from vizier for NVSS and TGSS.
+&#64;returns:</p>
+<blockquote>
+<div><p>MajorAxis (unitless) (Vizier : arcsec),
+MinorAxis (unitless) (Vizier : arcsec),
+PA  (unitless) (Vizier : deg),
+pixel based position (single arguement)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.vzb_dict">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vzb_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.vzb_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.vzb_dict" title="Permalink to this definition"></a></dt>
+<dd><p>vizier base dictionary
+dictionary for NVSS, TGSS catalog using vizier</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rgbmaker.RGBMaker.vzc_dict">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vzc_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rgbmaker.html#RGBMaker.vzc_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.RGBMaker.vzc_dict" title="Permalink to this definition"></a></dt>
+<dd><p>vizier column dictionary
+dictionary for NVSS, TGSS column using vizier
+TODO: add column for errors too</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rgbmaker.Surveys">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">rgbmaker.</span></span><span class="sig-name descname"><span class="pre">Surveys</span></span><a class="reference internal" href="_modules/rgbmaker.html#Surveys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rgbmaker.Surveys" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#rgbmaker.RGBMaker" title="rgbmaker.RGBMaker"><code class="xref py py-class docutils literal notranslate"><span class="pre">rgbmaker.RGBMaker</span></code></a></p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, avialxee.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
