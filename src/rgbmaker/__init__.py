@@ -149,7 +149,7 @@ class RGBMaker:
 
     def getdd(self, input_svys, sampler):
         """
-        takes input svys and fetches fits from skyview using astroquery.
+        takes input svys (array) and fetches fits from skyview using astroquery.
         returns [list([hdulist[0].data, hdulist[0].header]), error]
         """
         _imglt = []
@@ -161,6 +161,8 @@ class RGBMaker:
                     i, [np.zeros((int(self.px), int(self.px))), None])
             else:
                 _imglt.append([_imgls[i][0][0].data, _imgls[i][0][0].header])
+                if not self.wcs:
+                    self.wcs = WCS(_imgls[i][0][0].header)
         return _imglt, _error
 
     def _getNVAS(self, archives):
@@ -187,7 +189,7 @@ class RGBMaker:
         returns a list of hdul and errors requested by getdd.
         """
         result = [0]*len(_in_svys)
-        _error = None
+        imglt, _error = [None]*2
         _sam = sam
         try:
             #print(_in_svys)

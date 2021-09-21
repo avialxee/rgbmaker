@@ -306,6 +306,8 @@ def query(name="", position="", radius=float(0.12), archives=1,
 
         return fetch_q.throw_output()
 
+
+
 def save_fig(plt, fig, kind='base64', output='output.jpg'):
     
     if kind == 'base64':
