@@ -28,12 +28,6 @@ def query(name="", position="", radius=float(0.12), archives=1,
     >>> result = query(name='Avi', position='3C 33.1', radius=0.12, kind='jpg')
     >>> print(result)
     
-
-.. _Fields:
-
-Fields:
-------------
-   
 :name:
    (Optional) (default=Anonymous) (string)  
    
@@ -62,11 +56,11 @@ Fields:
       
       *This option returns four images.*
 
-         1. There are two :ref:`ROR<Fields>`
+         1. There are two `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_`
             *(Radio (TGSS ADR1) - Optical (DSS2Red) - Radio (NVSS))* images. 
             One with TGSS Contours and another with NVSS Contours. 
          
-         2. The third image is an :ref:`IOU<Fields>` 
+         2. The third image is an `IOU <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` 
             *(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))* with TGSS Contours.
 
          3. The final RGB image is an optical image with *(DSS2IR - DSS2Red - DSS2Blue)* with TGGSS Contours.
@@ -75,7 +69,7 @@ Fields:
    
          *This option returns two images.*
 
-         1. The first is a :ref:`ROR<Fields>` Image with TGSS contours. 
+         1. The first is a `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` Image with TGSS contours. 
             The various symbol seen on the image is the `catalog <https://en.wikipedia.org/wiki/List_of_astronomical_catalogues/>`_ 
             data of the respective survey.
 
