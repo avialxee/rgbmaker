@@ -4,3 +4,4 @@ regions
 numpy>=1.20.3
 astroquery
 requests
+jupyter-sphinx
