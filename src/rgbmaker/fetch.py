@@ -21,42 +21,36 @@ import sys
 def query(name="", position="", radius=float(0.12), archives=1, 
                     imagesopt=2, kind='base64', spidx_file=None, px=480, annot=True):
     """
-    Usage
-    ------
-    >>>> from radathome.fetch import query
-    >>>> 
+    .. code-block:: python
+        >>>> from radathome.fetch import query
+        >>>> 
 
     Form Fields:
     ------------
          
-        name (Optional) (default=Anonymous) (string)
-        -------------------------------------------
+        : name (Optional) (default=Anonymous) (string)
 
             Your name will be displayed on the image enabling mentors, professors, 
             fellow students to be able to recognize your work. Credit is important!
 
-        position (Required)
-        -------------------
-
+        : position (Required)
+        
             The object name or the coordinates of the object in the FK5 (J2000) system. 
             Ex: "14 09 48.86 -03 02 32.6", M87, NGC1243, without quotes.
 
-        radius (Required) (default = 0.12) (float)
-        ------------------------------------------
-
+        : radius (Required) (default = 0.12) (float)
+        
             The size of the image in degrees, this size will be used for the 
             [field of view](https://en.wikipedia.org/wiki/Field_of_view) in the resultant image. 
             For reference, in the night sky, the moon is about 0.52 degrees across.
 
-        imagesopt (default=2)(string)(values=1,2,3)
-        -------------------------------------------
-
+        : imagesopt (default=2)(string)(values=1,2,3)
+        
             This dropdown gives you a choice of the composite images you want to create. 
 
-            IOU ROR Optical (option = 1)
-            ---------------------------
+            : IOU ROR Optical (option = 1)
             
-                _This option returns four images._
+                *This option returns four images.*
 
                 1. There are two [ROR](#what-is-iou-ror-and-rgb) 
                     (Radio (TGSS ADR1) - Optical (DSS2Red) - Radio (NVSS)) images. 
