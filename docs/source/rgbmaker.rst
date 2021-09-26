@@ -4,9 +4,9 @@ RGBMaker package
 rgbmaker.fetch 
 ---------------------
 
-.. automodule:: rgbmaker.fetch.query
+.. automodule:: rgbmaker.fetch
    :members:
-   :undoc-members:
+   :no-undoc-members:
    :show-inheritance:
 
 rgbmaker.imgplt 
