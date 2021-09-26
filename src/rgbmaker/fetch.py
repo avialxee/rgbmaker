@@ -76,7 +76,7 @@ Fields:
          *This option returns two images.*
 
          1. The first is a :ref:`ROR<Fields>` Image with TGSS contours. 
-            The various symbol seen on the image is the `catalog <https://en.wikipedia.org/wiki/Astronomical_catalog/>`_ 
+            The various symbol seen on the image is the `catalog <https://en.wikipedia.org/wiki/List_of_astronomical_catalogues/>`_ 
             data of the respective survey.
 
          2. The second image is a composite image with DSS2Red background and contours of various 
