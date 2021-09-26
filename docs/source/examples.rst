@@ -13,9 +13,9 @@ Spectral Index data from Spidx file* `catalog <http://tgssadr.strw.leidenuniv.nl
     from rgbmaker.fetch import query
     import pathlib
     position='speca'
-    filepath = pathlib.Path('__file__').parent.resolve() /  "../../jupyter-checks/spidx.fits"
+    #filepath = pathlib.Path('__file__').parent.resolve() /  "../../jupyter-checks/spidx.fits"
     position='speca'
-    query(position=position, px=150, kind='plot', annot=0, spidx_file=filepath)
+    query(position=position, px=150, kind='plot', annot=0) #spidx_file=filepath)
 
 
 
