@@ -5,14 +5,26 @@ from math import sqrt ,exp ,sin , pi, log10
 
 def cosmo_calc(z, H0=69.6, WM=0.286, WV=None, univ=2):
     '''
-    Cosmology calculator ala Ned Wright (www.astro.ucla.edu/~wright)
-    input values = redshift, Ho, Omega_m, Omega_vac
-    ouput values = age at z, distance in Mpc, kpc/arcsec, apparent to abs mag conversion
-    Options:   
-            -h for this message 
-            -v for verbose response 
-            H0 = 75                         # Hubble constant
-            WM = 0.3                        # Omega(matter)
+    Cosmology calculator aka Ned Wright www.astro.ucla.edu/~wright
+    
+    *Input values* 
+        
+        redshift, Ho, Omega_m, Omega_vac
+
+    *ouput values*
+    
+        age at z, distance in Mpc, kpc/arcsec, apparent to abs mag conversion
+    
+    *Options*
+
+        :-h:
+            for help message 
+        :-v:
+            for verbose response 
+        :H0 = 75:
+            Hubble constant
+        :WM = 0.3:
+            Omega(matter)
     '''
     z = float(z)    # redshift
     H0 = float(H0)  # Hubble constant

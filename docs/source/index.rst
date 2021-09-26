@@ -12,10 +12,10 @@ Use the tool here : `RGBMaker <https://radathomeindia.org/rgbmaker/>`_
    :maxdepth: 2
    :caption: Contents:
 
-rgbmaker package
+RGBMaker package
 ================
 
-rgbmaker.fetch module
+rgbmaker.fetch 
 ---------------------
 
 .. automodule:: rgbmaker.fetch.query
@@ -23,7 +23,7 @@ rgbmaker.fetch module
    :undoc-members:
    :show-inheritance:
 
-rgbmaker.imgplt module
+rgbmaker.imgplt 
 ----------------------
 
 .. automodule:: rgbmaker.imgplt
@@ -31,7 +31,7 @@ rgbmaker.imgplt module
    :undoc-members:
    :show-inheritance:
 
-rgbmaker.tgss\_spidx module
+rgbmaker.tgss\_spidx 
 ---------------------------
 
 .. automodule:: rgbmaker.tgss_spidx
@@ -39,7 +39,7 @@ rgbmaker.tgss\_spidx module
    :undoc-members:
    :show-inheritance:
 
-rgbmaker.wrightCC module
+rgbmaker.wrightCC 
 ------------------------
 
 .. automodule:: rgbmaker.wrightCC

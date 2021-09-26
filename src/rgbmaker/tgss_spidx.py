@@ -2,23 +2,32 @@ from astropy.io import fits
 import numpy as np
 
 def find_spidx(spidx_file,c, r):
-    """bash:
-    >>> find_spidx('spidxcat_v1.1b.fits', c)
+    """
+    
+.. code-block:: python
+
+    >>> file_path = 'spidxcat_v1.1b.fits'
+    >>> c = coordinates.SkyCoord.from_name('3C 33.1', frame='fk5')
+    >>> find_spidx(file_path, c)
     >>> [212.52272467 212.43975207 212.47209909 212.46530053 212.39858977
         212.40165324],[-3.11523434 -3.03256748 -3.07505213 -3.0517433  -2.9848956  -2.96384673], 
         [-0.842 -0.488 -0.872 -0.308 -0.615 -0.471]
 
-    Parameters:
-    ----------
-        spidx_file  : spidx fits file (approx 111 MB) with Fitsrec type table in hdul[1]
-        c           : Astropy SkyCoord type RA, DEC (astropy unit - degrees)
-        radius (r)  : Astropy unit in degree for the sky angular size.
-        
+*Parameters*
 
-    Returns:
-    --------
-        xi, yi, spidx : RA(unitless), DEC(unitless) and corrosponding Spectral Index values
-                        that can be plotted on plot using wcs.world_to_pixel()
+    :spidx_file:
+        spidx fits file (approx 111 MB) with Fitsrec type table in hdul[1]
+    :c:
+        Astropy SkyCoord type RA, DEC 
+        (astropy unit - degrees)
+    :radius (r):
+        Astropy unit in degree for the sky angular size.
+    
+
+*Returns*
+
+    :xi, yi, spidx:
+        RA(unitless), DEC(unitless) and corrosponding Spectral Index values that can be plotted on plot using wcs.world_to_pixel()
 
     """
 
