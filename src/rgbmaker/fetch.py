@@ -22,11 +22,10 @@ def query(name="", position="", radius=float(0.12), archives=1,
                     imagesopt=2, kind='base64', spidx_file=None, px=480, annot=True):
     """
     
-.. code-block:: python
+.. jupyter-execute::
 
-    >>> from rgbmaker.fetch import query
-    >>> result = query(name='Avi', position='3C 33.1', radius=0.12, kind='jpg')
-    >>> print(result)
+    from rgbmaker.fetch import query
+    query(name='Avi', position='3C 33.1', radius=0.12, kind='plot')
 
 *Parameters*
 
