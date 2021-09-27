@@ -17,7 +17,7 @@ Use the tool here : `RGBMaker <https://radathomeindia.org/rgbmaker/>`_
 .. jupyter-execute::
 
    from rgbmaker.fetch import query
-   query(name='Avi', position='speca', radius=0.12, kind='plot', px=150)
+   query(name='Avi', position='speca', radius=0.12, kind='plot', px=480, imagesopt=1)
     
 
 
