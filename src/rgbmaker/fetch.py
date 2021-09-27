@@ -27,62 +27,80 @@ def query(name="", position="", radius=float(0.12), archives=1,
     >>> from rgbmaker.fetch import query
     >>> result = query(name='Avi', position='3C 33.1', radius=0.12, kind='jpg')
     >>> print(result)
+
+*Parameters*
+
+    :name:
+        (Optional) (default=Anonymous) (string)  
+
+        Your name will be displayed on the image enabling mentors, professors, 
+        fellow students to be able to recognize your work. Credit is important!
+
+    :position: 
+        (Required)
+
+        The object name or the coordinates of the object in the FK5 (J2000) system. 
+        Ex: "14 09 48.86 -03 02 32.6", M87, NGC1243, without quotes.
+
+    :radius:
+        (Required) (default = 0.12) (float)
+
+        The size of the image in degrees, this size will be used for the 
+        `field of view <https://en.wikipedia.org/wiki/Field_of_view/>`_ in the resultant image. 
+        For reference, in the night sky, the moon is about 0.52 degrees across.
+
+    :imagesopt:
+        (default=2)(string)(values=1,2,3)
+
+        This dropdown gives you a choice of the composite images you want to create. 
+
+        **IOU ROR Optical (option = 1)**
+            
+            *This option returns four images.*
+
+                1. There are two `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_`
+                *(Radio (TGSS ADR1) - Optical (DSS2Red) - Radio (NVSS))* images. 
+                One with TGSS Contours and another with NVSS Contours. 
+                
+                2. The third image is an `IOU <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` 
+                *(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))* with TGSS Contours.
+
+                3. The final RGB image is an optical image with *(DSS2IR - DSS2Red - DSS2Blue)* with TGGSS Contours.
+
+    **Composite Contours on DSS2R  (option = 2)**
     
-:name:
-   (Optional) (default=Anonymous) (string)  
-   
-   Your name will be displayed on the image enabling mentors, professors, 
-   fellow students to be able to recognize your work. Credit is important!
+            *This option returns two images.*
 
-:position: 
-   (Required)
-
-   The object name or the coordinates of the object in the FK5 (J2000) system. 
-   Ex: "14 09 48.86 -03 02 32.6", M87, NGC1243, without quotes.
-
-:radius:
-   (Required) (default = 0.12) (float)
-
-   The size of the image in degrees, this size will be used for the 
-   `field of view <https://en.wikipedia.org/wiki/Field_of_view/>`_ in the resultant image. 
-   For reference, in the night sky, the moon is about 0.52 degrees across.
-
-:imagesopt:
-   (default=2)(string)(values=1,2,3)
-
-   This dropdown gives you a choice of the composite images you want to create. 
-
-   **IOU ROR Optical (option = 1)**
-      
-      *This option returns four images.*
-
-         1. There are two `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_`
-            *(Radio (TGSS ADR1) - Optical (DSS2Red) - Radio (NVSS))* images. 
-            One with TGSS Contours and another with NVSS Contours. 
-         
-         2. The third image is an `IOU <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` 
-            *(Infrared (WISE 22) - Optical (DSS2 Red) - Ultraviolet (Galex Near UV))* with TGSS Contours.
-
-         3. The final RGB image is an optical image with *(DSS2IR - DSS2Red - DSS2Blue)* with TGGSS Contours.
-   
-   **Composite Contours on DSS2R  (option = 2)**
-   
-         *This option returns two images.*
-
-         1. The first is a `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` Image with TGSS contours. 
+            1. The first is a `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` Image with TGSS contours. 
             The various symbol seen on the image is the `catalog <https://en.wikipedia.org/wiki/List_of_astronomical_catalogues/>`_ 
             data of the respective survey.
 
-         2. The second image is a composite image with DSS2Red background and contours of various 
+            2. The second image is a composite image with DSS2Red background and contours of various 
             radio surveys like TGSS, NVSS, and VLA First (if available).
 
-   
-:archives:
-   (default=1)(string)
+    
+    :archives:
+        (default=1)(string)
 
-   This dropdown currently offers access to the NVAS image archive. Selecting this option will 
-   return the top 5 results from NVAS (if exists). These can be downloaded as .imfits files (open with DS9) 
-   by using save as an option when right-clicked.
+        This dropdown currently offers access to the NVAS image archive. Selecting this option will 
+        return the top 5 results from NVAS (if exists). These can be downloaded as .imfits files (open with DS9) 
+        by using save as an option when right-clicked.
+    
+    :kind:
+        (default='base64')
+        choose from base64, plot, png, jpg to show base64 of resultant image, plot on output, save png/jpg files
+        
+    :spidx_file:
+        (Default=None)
+        enter path to spidx.fits file that contains spectral index data (see example 1).
+    
+    :px:
+        (default=480)
+        change pixel value for the final resulatant image.
+    
+    :annot:
+        (default=True)
+        remove any annotation by setting this to False.
 
     """
     fetch_q = rgbmaker(name=name, position=position,
