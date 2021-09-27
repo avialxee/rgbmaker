@@ -57,7 +57,7 @@ def query(name="", position="", radius=float(0.12), archives=1,
             
             *This option returns four images.*
 
-                1. There are two `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_`
+                1. There are two `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` 
                 *(Radio (TGSS ADR1) - Optical (DSS2Red) - Radio (NVSS))* images. 
                 One with TGSS Contours and another with NVSS Contours. 
                 
@@ -66,16 +66,16 @@ def query(name="", position="", radius=float(0.12), archives=1,
 
                 3. The final RGB image is an optical image with *(DSS2IR - DSS2Red - DSS2Blue)* with TGGSS Contours.
 
-    **Composite Contours on DSS2R  (option = 2)**
-    
-            *This option returns two images.*
+        **Composite Contours on DSS2R  (option = 2)**
+        
+                *This option returns two images.*
 
-            1. The first is a `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` Image with TGSS contours. 
-            The various symbol seen on the image is the `catalog <https://en.wikipedia.org/wiki/List_of_astronomical_catalogues/>`_ 
-            data of the respective survey.
+                1. The first is a `ROR <https://radathomeindia.org/rgbmaker-info#what-is-iou-ror-and-rgb>_` Image with TGSS contours. 
+                The various symbol seen on the image is the `catalog <https://en.wikipedia.org/wiki/List_of_astronomical_catalogues/>`_ 
+                data of the respective survey.
 
-            2. The second image is a composite image with DSS2Red background and contours of various 
-            radio surveys like TGSS, NVSS, and VLA First (if available).
+                2. The second image is a composite image with DSS2Red background and contours of various 
+                radio surveys like TGSS, NVSS, and VLA First (if available).
 
     
     :archives:
