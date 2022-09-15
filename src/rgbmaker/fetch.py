@@ -117,7 +117,8 @@ def query(name="", position="", radius=float(0.12), archives=1,
         return fetch_q.throw_output()
 
     else:
-        fetch_q.otext.append({'Target center': fetch_q.c.to_string('hmsdms')})
+        if fetch_q.c:
+            fetch_q.otext.append({'Target center': fetch_q.c.to_string('hmsdms')})
         if fetch_q.imagesopt == 1 and fetch_q.c:
             # --- using variables for readability -#--#
             tgss, dss2r, nvss, w22, gnuv, dss2i, dss2b = val['tgss']['data'], val[
