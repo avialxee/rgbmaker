@@ -13,7 +13,7 @@ $ pip install rgbmaker
 
 # Usage
 ```bash
-rgbmaker -h
+$ rgbmaker -h
 usage: rgbmaker [-h] [-p POSITION] [-r RADIUS] [-i IMAGESOPT] [-n NAME] [-a ARCHIVES] [-k KIND] [-s SPIDX_FILE]
                 [-px PIXELS] [-A ANNOT]
 
@@ -49,9 +49,9 @@ optional arguments:
 ```
 
 ```py
-$ from rgbmaker.fetch import query
-$ result = query(name='Avi', position='3C 33.1', radius=0.12, kind='jpg')
-$ print(result)
+> from rgbmaker.fetch import query
+> result = query(name='Avi', position='3C 33.1', radius=0.12, kind='jpg')
+> print(result)
 ```
 # Demo
 
