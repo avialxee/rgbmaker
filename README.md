@@ -58,5 +58,5 @@ $ python3.8
 # Demo
 
 
-https://user-images.githubusercontent.com/36457781/128387219-07490fdd-c417-452b-8c68-20cfa499b1b6.mp4
+[![asciicast](https://asciinema.org/a/uvMgrVQBJwUCmR3C22J7qxBMA.svg)](https://asciinema.org/a/uvMgrVQBJwUCmR3C22J7qxBMA)
 
