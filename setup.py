@@ -5,7 +5,7 @@ with open("README.md", "r") as rdme:
 
 setup(
     name = 'rgbmaker',
-    version = '0.0.4.8.1',
+    version = '0.0.5.0.0',
     url='https://github.com/avialxee/rgbmaker',
     author='Avinash Kumar',
     author_email='avialxee@gmail.com',
@@ -29,7 +29,7 @@ setup(
     },
      entry_points={ 
         "console_scripts": [
-            "rgbmaker=rgbmaker.fetch:cli",
+            "rgbmaker=rgbmaker.cli:cli",
         ],
     },
 
