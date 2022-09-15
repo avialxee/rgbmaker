@@ -49,6 +49,8 @@ optional arguments:
 ```
 
 ```py
+$ python3.8
+
 > from rgbmaker.fetch import query
 > result = query(name='Avi', position='3C 33.1', radius=0.12, kind='jpg')
 > print(result)
