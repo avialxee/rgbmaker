@@ -39,7 +39,8 @@ def cli():
     kind=args.kind or "png"
     spidx_file=args.spidx_file
     pixels=args.pixels or 480
-    annot=args.annot or True
+    annot=args.annot or 'True'
+    annot = str(annot).lower()=='true'
     q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
     px=pixels,annot=annot)
     print(q)
