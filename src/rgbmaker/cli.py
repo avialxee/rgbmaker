@@ -27,6 +27,8 @@ parser.add_argument('-px', '--pixels', type=str, help="""(default=480)
         change pixel value for the final resulatant image.""")
 parser.add_argument('-A', '--annot', type=str, help="""(default=True)
         remove any annotation by setting this to False.""")
+parser.add_argument('-si', '--spect_idx', type=str, help="""(Optional) (Default=None)
+        Takes input as list for spectral index calculation.""")
 args=parser.parse_args()
 
 
@@ -41,6 +43,7 @@ def cli():
     pixels=args.pixels or 480
     annot=args.annot or 'True'
     annot = str(annot).lower()=='true'
+    spect_idx=args.spect_idx
     q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
     px=pixels,annot=annot)
     print(q)
