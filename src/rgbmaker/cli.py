@@ -43,7 +43,7 @@ def cli():
     pixels=args.pixels or 480
     annot=args.annot or 'True'
     annot = str(annot).lower()=='true'
-    SPEC_INDEX=args.SPEC_INDEX
+    spec_index=args.SPEC_INDEX
     q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
     px=pixels,annot=annot)
     print(q)
