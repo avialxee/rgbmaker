@@ -1,4 +1,5 @@
 from rgbmaker.fetch import query
+from rgbmaker.imgplt import pl_powerlawsi
 import argparse
 parser = argparse.ArgumentParser('rgbmaker',description="""A python package which communicates to different 
 astronomical services and fetches fits and numerical data.
@@ -43,10 +44,13 @@ def cli():
     pixels=args.pixels or 480
     annot=args.annot or 'True'
     annot = str(annot).lower()=='true'
-    SPEC_INDEX=args.SPEC_INDEX
+    SPEC_INDEX=args.spec_index
     q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
     px=pixels,annot=annot)
-    print(q)
+    if SPEC_INDEX != None:
+        pl_powerlawsi(S,S_e,freq= [150, 1420], kind=None)
+    else:
+        print(q)
 
 
 if __name__ == "__main__":
