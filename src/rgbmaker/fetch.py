@@ -128,9 +128,9 @@ def query(name="", position="", radius=float(0.12), archives=1,
             img2, lvlc2 = overlayc(tgss, dss2r, nvss, tgss, level_contour, 0.015) # TGSS
             img3 = overlayo(w22,dss2r,gnuv, kind='IOU')
             img4 = overlayo(dss2i,dss2r,dss2b, kind='Optical')
-            if lvlc1 is not None:
-                fetch_q.otext.append({'TGSS contour ': (str(np.round(lvlc2, 3)))}) # TGSS
             if lvlc2 is not None:
+                fetch_q.otext.append({'TGSS contour ': (str(np.round(lvlc2, 3)))}) # TGSS
+            if lvlc1 is not None:
                 fetch_q.otext.append({'NVSS contour ': (str(np.round(lvlc1, 4)))}) # NVSS
 
             # -------- plotting first plot -------------#--#
