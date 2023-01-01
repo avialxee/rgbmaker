@@ -1,5 +1,5 @@
 from rgbmaker import RGBMaker as rgbmaker
-from rgbmaker.imgplt import pl_RGB, to_pixel, pl_RGBC, overlayc, overlayo, sqrt
+from rgbmaker.imgplt import pl_RGB, to_pixel, pl_RGBC, overlayc, overlayo, sqrt, save_fig
 from rgbmaker.tgss_spidx import find_spidx
 
 from matplotlib import pyplot as plt
@@ -10,12 +10,10 @@ from matplotlib.collections import PatchCollection
 
 import matplotlib.patches as mpatches
 import numpy as np
-import io
+
 import urllib
-import base64
+
 from time import perf_counter
-from os import path, makedirs
-import argparse
 
 import sys
 
@@ -311,40 +309,3 @@ def query(name="", position="", radius=float(0.12), archives=1,
                 fetch_q.status = "success"
 
         return fetch_q.throw_output()
-
-
-
-def save_fig(plt, fig, kind='base64', output='output.jpg'):
-    
-    if kind == 'base64':
-        buf = io.BytesIO()
-        fig.savefig(buf, format='png', bbox_inches='tight',
-                    transparent=True, pad_inches=0)
-        buf.seek(0)
-        string = base64.b64encode(buf.read())
-        plt.close()
-        return string
-    elif kind == 'plot':
-        plt.show()
-        return 'plotted'
-    else :
-        if not path.exists('output'):
-            makedirs('output')
-        newPath = 'output/'+output
-        opt = newPath
-        if path.exists(newPath):
-            numb = 1
-            while path.exists(newPath):
-                newPath = "{0}_{2}{1}".format(
-                    *path.splitext(opt) + (numb,))
-                try :
-                    if path.exists(newPath):
-                        numb += 1 
-                except:
-                    pass               
-        fig.savefig(newPath, format=kind, bbox_inches='tight',
-                    pad_inches=0)
-        print("saved {}".format(newPath))
-        plt.close()
-        return newPath
-

@@ -4,6 +4,9 @@ import math
 from astropy import units as ut
 from matplotlib import pyplot as plt
 from matplotlib.offsetbox import AnchoredText
+from os import path, makedirs
+import base64
+import io
 
 # -- below are slight modifications of
 # original author: Min-Su Shin , University of Michigan ----- #-#
@@ -128,6 +131,42 @@ Performs log10 scaling of the input numpy array.
 
 # ---------- author : @avialxee ---------#-#
 
+
+def save_fig(plt, fig, kind='base64', output='output.jpg'):
+    
+    if kind == 'base64':
+        buf = io.BytesIO()
+        fig.savefig(buf, format='png', bbox_inches='tight',
+                    transparent=True, pad_inches=0)
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        plt.close()
+        return string
+    elif kind == 'plot':
+        plt.show()
+        return 'plotted'
+    else :
+        if not path.exists('output'):
+            makedirs('output')
+        newPath = 'output/'+output
+        opt = newPath
+        if path.exists(newPath):
+            numb = 1
+            while path.exists(newPath):
+                newPath = "{0}_{2}{1}".format(
+                    *path.splitext(opt) + (numb,))
+                try :
+                    if path.exists(newPath):
+                        numb += 1 
+                except:
+                    pass               
+        fig.savefig(newPath, format=kind, bbox_inches='tight',
+                    pad_inches=0)
+        print("saved {}".format(newPath))
+        plt.close()
+        return newPath
+
+
 def overlayc (r,g,b,c,lvl,cmin) :
   """
 **Returns RGB stacked image and contour levels to be overlayed.**
@@ -211,7 +250,7 @@ normalizing before scaling
   else :
     return X_scaled
 
-def pl_powerlawsi(S,S_e,freq= [150, 1420], kind=None):
+def pl_powerlawsi(S,S_e,freq= [150, 1420], kind='plot', label="output"):
   """
 plot powerlaw of spectralindex
 
@@ -223,6 +262,12 @@ plot powerlaw of spectralindex
     error on Total flux of TGSS and NVSS resp (list)
   :freq:
     frequency of TGSS and NVSS resp (list) (default = [150, 1420] )
+  :kind:
+    (str) choose from 'base64', 'plot', 'jpg','png'
+      - 'base64' : base64 encoded
+      - 'plot' : outputs plot in window or in your jupyter notebook
+      - 'jpg' : saves jpg image output in output/
+      - 'png' : saves png image output in output/
 
 *Example*
 
@@ -233,13 +278,10 @@ plot powerlaw of spectralindex
   >>> pl_si(S,S_e)
   """
 
-  tgss = [np.float(S[0])]
-  nvss = [np.float(S[1])]
+  tgss = [float(S[0])]
+  nvss = [float(S[1])]
   factor = freq[0]/freq[1]
   si = np.round(np.log(np.divide(tgss, nvss)+1E-5)/np.log(factor+1E-5), 3)
-  si
-  plt.clf()
-  plt.ioff()
   fig = plt.figure(figsize=(10, 5))
   ax1 = fig.add_subplot(1, 2, 1)
   ax1.errorbar(freq, S, yerr=S_e,
@@ -253,10 +295,9 @@ plot powerlaw of spectralindex
   #slope = (S[1]-S[0])/(freq[1]-freq[0])
   anchored_text = AnchoredText(f'spectral index: {si[0]}', loc=1)
   ax1.add_artist(anchored_text)
-  plt.show()
-  if (kind != 'plot') and (not None):
-    return plt, fig
-
+  
+  save_fig(plt,fig,kind,output=label)
+  
 def pl_RGB(ax, img,title,name,annot=True):
   """
     *Inputs*
