@@ -28,10 +28,13 @@ parser.add_argument('-px', '--pixels', type=str, help="""(default=480)
         change pixel value for the final resulatant image.""")
 parser.add_argument('-A', '--annot', type=str, help="""(default=True)
         remove any annotation by setting this to False.""")
-parser.add_argument('-si', '--spec_index', type=str, help="""(Optional) (Default=None)
+parser.add_argument('-flx', '--flux_list', type=str, help="""(Optional) (Default=None)
+        Takes input as list for spectral index calculation.""")
+parser.add_argument('-flxe', '--flux_error', type=str, help="""(Optional) (Default=None)
+        Takes input as list for spectral index calculation.""")
+parser.add_argument('-freq', '--freq_list', type=str, help="""(Optional) (Default=None)
         Takes input as list for spectral index calculation.""")
 args=parser.parse_args()
-
 
 def cli():
     position=args.position or ""
@@ -44,12 +47,23 @@ def cli():
     pixels=args.pixels or 480
     annot=args.annot or 'True'
     annot = str(annot).lower()=='true'
-    SPEC_INDEX=args.spec_index
-    q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
-    px=pixels,annot=annot)
-    if SPEC_INDEX != None:
-        pl_powerlawsi(S,S_e,freq= [150, 1420], kind=None)
+    S1=(args.flux_list).split(',')
+    S=list(map(float, S1))
+    #S1=args.flux_list
+    #S=list(map(float, S1))
+    S_e1=(args.flux_error).split(',')
+    S_e=list(map(float, S_e1))
+    #S_e1=args.flux_error
+    #S_e=list(map(float, S_e1))
+    freq=args.freq_list
+    #SPEC_INDEX=args.spec_index
+    if S != None:
+        #print(S)
+        #print(type(S[0]))
+        sindex = pl_powerlawsi(S,S_e,freq= [150, 1420], kind='png', label="output")
     else:
+        q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
+        px=pixels,annot=annot)
         print(q)
 
 
