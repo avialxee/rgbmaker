@@ -144,6 +144,7 @@ def save_fig(plt, fig, kind='base64', output='output.jpg'):
         return string
     elif kind == 'plot':
         plt.show()
+	plt.close()
         return 'plotted'
     else :
         if not path.exists('output'):
