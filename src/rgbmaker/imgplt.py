@@ -296,7 +296,7 @@ plot powerlaw of spectralindex
   anchored_text = AnchoredText(f'spectral index: {si[0]}', loc=1)
   ax1.add_artist(anchored_text)
   
-  save_fig(plt,fig,kind,output=label)
+  outputfile = save_fig(plt,fig,kind,output=label)
   
 def pl_RGB(ax, img,title,name,annot=True):
   """

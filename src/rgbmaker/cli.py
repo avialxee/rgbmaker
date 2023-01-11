@@ -1,4 +1,5 @@
 from rgbmaker.fetch import query
+from rgbmaker.imgplt import pl_powerlawsi
 import argparse
 parser = argparse.ArgumentParser('rgbmaker',description="""A python package which communicates to different 
 astronomical services and fetches fits and numerical data.
@@ -27,8 +28,13 @@ parser.add_argument('-px', '--pixels', type=str, help="""(default=480)
         change pixel value for the final resulatant image.""")
 parser.add_argument('-A', '--annot', type=str, help="""(default=True)
         remove any annotation by setting this to False.""")
+parser.add_argument('-flux', '--flux_list', type=str, help="""(Optional) (Default=None)
+        Takes input as list for spectral index calculation.""")
+parser.add_argument('-flux_error', '--flux_error', type=str, help="""(Optional) (Default=None)
+        Takes input as list for spectral index calculation.""")
+parser.add_argument('-freq', '--freq_list', type=str, help="""(Optional) (Default=None)
+        Takes input as list for spectral index calculation.""")
 args=parser.parse_args()
-
 
 def cli():
     position=args.position or ""
@@ -39,11 +45,22 @@ def cli():
     kind=args.kind or "png"
     spidx_file=args.spidx_file
     pixels=args.pixels or 480
-    annot=args.annot or 'True'
-    annot = str(annot).lower()=='true'
-    q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
-    px=pixels,annot=annot)
-    print(q)
+    annot = str(args.annot or 'True').lower()=='true'
+    S=args.flux_list 
+    S_e=args.flux_error or "0, 0"
+    freq=args.freq_list or "150, 1420"
+    #SPEC_INDEX=args.spec_index
+    if S:
+        S=list(map(float, S.split(',')))
+        S_e=list(map(float, S_e.split(',')))
+        freq=list(map(float, freq.split(',')))
+        #print(S)
+        #print(type(S[0]))
+        sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
+    if position:
+        q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
+        px=pixels,annot=annot)
+        print(q)
 
 
 if __name__ == "__main__":
