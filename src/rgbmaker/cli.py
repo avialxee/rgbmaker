@@ -28,9 +28,9 @@ parser.add_argument('-px', '--pixels', type=str, help="""(default=480)
         change pixel value for the final resulatant image.""")
 parser.add_argument('-A', '--annot', type=str, help="""(default=True)
         remove any annotation by setting this to False.""")
-parser.add_argument('-flx', '--flux_list', type=str, help="""(Optional) (Default=None)
+parser.add_argument('-flux', '--flux_list', type=str, help="""(Optional) (Default=None)
         Takes input as list for spectral index calculation.""")
-parser.add_argument('-flxe', '--flux_error', type=str, help="""(Optional) (Default=None)
+parser.add_argument('-flux_error', '--flux_error', type=str, help="""(Optional) (Default=None)
         Takes input as list for spectral index calculation.""")
 parser.add_argument('-freq', '--freq_list', type=str, help="""(Optional) (Default=None)
         Takes input as list for spectral index calculation.""")
@@ -59,11 +59,11 @@ def cli():
     #freq2=(args.freq_list or "150, 1420").split(',')
     freq=list(map(float, (args.freq_list or "150, 1420").split(',')))
     #SPEC_INDEX=args.spec_index
-    if S != None:
+    if S:
         #print(S)
         #print(type(S[0]))
         sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
-    else:
+    elif position:
         q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
         px=pixels,annot=annot)
         print(q)
