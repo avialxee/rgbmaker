@@ -45,25 +45,16 @@ def cli():
     kind=args.kind or "png"
     spidx_file=args.spidx_file
     pixels=args.pixels or 480
-    #annot=args.annot or 'True'
     annot = str(args.annot or 'True').lower()=='true'
-    #S1=(args.flux_list).split(',')
     S=list(map(float, (args.flux_error).split(',')))
-    #S1=args.flux_list
-    #S=list(map(float, S1))
-    #S_e1=(args.flux_error).split(',')
     S_e=list(map(float, (args.flux_error).split(',')))
-    #S_e1=args.flux_error
-    #S_e=list(map(float, S_e1))
-    #freq1=args.freq_list or "150, 1420"
-    #freq2=(args.freq_list or "150, 1420").split(',')
     freq=list(map(float, (args.freq_list or "150, 1420").split(',')))
     #SPEC_INDEX=args.spec_index
     if S:
         #print(S)
         #print(type(S[0]))
         sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
-    elif position:
+    else:
         q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
         px=pixels,annot=annot)
         print(q)
