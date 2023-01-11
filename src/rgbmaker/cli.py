@@ -55,7 +55,8 @@ def cli():
     S_e=list(map(float, S_e1))
     #S_e1=args.flux_error
     #S_e=list(map(float, S_e1))
-    freq=args.freq_list
+    freq1=(args.freq_list).split(',')
+    freq=list(map(float, freq1))
     #SPEC_INDEX=args.spec_index
     if S != None:
         #print(S)
