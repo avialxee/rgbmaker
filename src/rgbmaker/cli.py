@@ -46,15 +46,15 @@ def cli():
     spidx_file=args.spidx_file
     pixels=args.pixels or 480
     annot = str(args.annot or 'True').lower()=='true'
-    S=list(map(float, (args.flux_error).split(',')))
+    S=list(map(float, (args.flux_error).split(','))) or "1,1"
     S_e=list(map(float, (args.flux_error).split(',')))
     freq=list(map(float, (args.freq_list or "150, 1420").split(',')))
     #SPEC_INDEX=args.spec_index
-    if S != None:
+    if S:
         #print(S)
         #print(type(S[0]))
         sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
-    else:
+    elif:
         q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
         px=pixels,annot=annot)
         print(q)
