@@ -46,7 +46,7 @@ def cli():
     spidx_file=args.spidx_file
     pixels=args.pixels or 480
     annot = str(args.annot or 'True').lower()=='true'
-    S=list(map(float, (args.flux_error).split(','))) or "1,1"
+    S=list(map(float, (args.flux_list or "1,1").split(',')))
     S_e=list(map(float, (args.flux_error).split(',')))
     freq=list(map(float, (args.freq_list or "150, 1420").split(',')))
     #SPEC_INDEX=args.spec_index
