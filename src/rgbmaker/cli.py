@@ -60,7 +60,7 @@ def cli():
     if S != None:
         #print(S)
         #print(type(S[0]))
-        sindex = pl_powerlawsi(S,S_e,freq= [150, 1420], kind='png', label="output")
+        sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
     else:
         q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
         px=pixels,annot=annot)
