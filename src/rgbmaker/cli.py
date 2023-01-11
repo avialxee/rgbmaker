@@ -47,7 +47,7 @@ def cli():
     pixels=args.pixels or 480
     annot = str(args.annot or 'True').lower()=='true'
     S=args.flux_list 
-    S_e=args.flux_error
+    S_e=args.flux_error or "0, 0"
     freq=args.freq_list or "150, 1420"
     #SPEC_INDEX=args.spec_index
     if S:
