@@ -54,7 +54,7 @@ def cli():
         #print(S)
         #print(type(S[0]))
         sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
-    elif position:
+    if position:
         q = query(name=name,position=position,radius=radius,imagesopt=imagesopt,archives=archives,kind=kind,spidx_file=spidx_file,
         px=pixels,annot=annot)
         print(q)
