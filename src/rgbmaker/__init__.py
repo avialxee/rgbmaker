@@ -56,7 +56,7 @@ class RGBMaker:
         to fetch FITS from Skyview and NVAS.        
         """
         ## ------------- Settings ---------------------
-        np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
+        #np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
         #VerifyWarning by astropy for NVSS in imagesopt=2 
         simplefilter('ignore', category=UserWarning)
         _input_svys, _input_sampler = self._sanitize_rgb()
