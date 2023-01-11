@@ -50,7 +50,7 @@ def cli():
     S_e=list(map(float, (args.flux_error or "1, 1").split(',')))
     freq=list(map(float, (args.freq_list or "150, 1420").split(',')))
     #SPEC_INDEX=args.spec_index
-    if position == None:
+    if S:
         #print(S)
         #print(type(S[0]))
         sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
