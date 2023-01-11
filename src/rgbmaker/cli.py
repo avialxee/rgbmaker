@@ -45,8 +45,8 @@ def cli():
     kind=args.kind or "png"
     spidx_file=args.spidx_file
     pixels=args.pixels or 480
-    annot=args.annot or 'True'
-    annot = str(annot).lower()=='true'
+    #annot=args.annot or 'True'
+    annot = str(args.annot or 'True').lower()=='true'
     #S1=(args.flux_list).split(',')
     S=list(map(float, (args.flux_error).split(',')))
     #S1=args.flux_list
