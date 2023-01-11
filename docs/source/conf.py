@@ -20,11 +20,11 @@ os.environ['PYTHONPATH'] = ':'.join((package_path, os.environ.get('PYTHONPATH', 
 # -- Project information -----------------------------------------------------
 
 project = 'rgbmaker'
-copyright = '2021, avialxee'
+copyright = '2023, avialxee'
 author = 'avialxee'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.5.0.2'
+release = '0.0.5.1'
 
 
 # -- General configuration ---------------------------------------------------

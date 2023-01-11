@@ -290,12 +290,10 @@ plot powerlaw of spectralindex
   ax1.set_yscale('log')
   ax1.set_ylabel('Spectral flux (mJy)')
   ax1.set_xticks([freq[0], freq[1]*0.4,freq[1]])
-  #ax1.set_yticks([S[0], S[1]*0.4, S[1]])
   ax1.set_xlabel('frequency (MHz)')
-  #slope = (S[1]-S[0])/(freq[1]-freq[0])
   anchored_text = AnchoredText(f'spectral index: {si[0]}', loc=1)
   ax1.add_artist(anchored_text)
-  
+  label=f"{label}.{kind}"
   outputfile = save_fig(plt,fig,kind,output=label)
   
 def pl_RGB(ax, img,title,name,annot=True):
@@ -366,23 +364,17 @@ def overlayo(ri, gi, bi, kind = 'IOU'):
   if kind == 'IOU':
     ri = sqrt(ri, scale_min=np.percentile(np.unique(ri),1.), scale_max=np.percentile(np.unique(ri),100.))
     gi = sqrt(gi, scale_min=np.percentile(np.unique(gi),1.), scale_max=np.percentile(np.unique(gi),100.))
-    #gi = log(gi, scale_min=np.percentile(np.unique(gi),0.), scale_max=np.percentile(np.unique(gi),100.),factor=2.85)
     bi = log(bi, scale_min=np.percentile(np.unique(bi), 5.),
              scale_max=np.percentile(np.unique(bi), 100.), factor=3.15)
     mul_factor = 255/ri.max()
     img = (np.transpose([(ri*mul_factor).astype(np.uint8),(gi*255/gi.max()).astype(np.uint8),(bi*255).astype(np.uint8)], (1, 2, 0)))
 
   if kind == 'Optical':
-    #ri = log(ri, scale_min=np.percentile(np.unique(ri),1.), scale_max=np.percentile(np.unique(ri),100.),factor=0.3)
     ri = sqrt(ri, scale_min=np.min(ri), scale_max=np.percentile(np.unique(ri),100.))
     gi = sqrt(gi, scale_min=1.15*np.min(gi), scale_max=np.percentile(np.unique(gi),100.))
-    #gi = log(gi, scale_min=np.percentile(np.unique(gi),0.), scale_max=np.percentile(np.unique(gi),100.),factor=7.85)
-    #bi = log(bi, scale_min=np.percentile(np.unique(bi),1.), scale_max=np.percentile(np.unique(bi),100.),factor=3.15)
     bi = sqrt(bi, scale_min=np.min(bi), scale_max=np.percentile(np.unique(bi),100.))
     mul_factor = 255/ri.max()
     img = (np.transpose([(ri*mul_factor).astype(np.uint8),(gi*255.99).astype(np.uint8),(bi*256).astype(np.uint8)], (1, 2, 0)))
-  #img = (np.dstack((ri,gi,bi))*255.99).astype(np.uint8)
-  #img = np.stack([ri,gi,bi], axis=2)
   return img
 
 def pl_RGBC(rows,columns,i,wcs,svy,lvlc,img,fig,name, pkind='ror',annot=True) :
