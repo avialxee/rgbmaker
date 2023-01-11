@@ -47,17 +47,17 @@ def cli():
     pixels=args.pixels or 480
     annot=args.annot or 'True'
     annot = str(annot).lower()=='true'
-    S1=(args.flux_list).split(',')
-    S=list(map(float, S1))
+    #S1=(args.flux_list).split(',')
+    S=list(map(float, (args.flux_error).split(',')))
     #S1=args.flux_list
     #S=list(map(float, S1))
-    S_e1=(args.flux_error).split(',')
-    S_e=list(map(float, S_e1))
+    #S_e1=(args.flux_error).split(',')
+    S_e=list(map(float, (args.flux_error).split(',')))
     #S_e1=args.flux_error
     #S_e=list(map(float, S_e1))
     #freq1=args.freq_list or "150, 1420"
-    freq2=(args.freq_list or "150, 1420").split(',')
-    freq=list(map(float, freq2))
+    #freq2=(args.freq_list or "150, 1420").split(',')
+    freq=list(map(float, (args.freq_list or "150, 1420").split(',')))
     #SPEC_INDEX=args.spec_index
     if S != None:
         #print(S)
