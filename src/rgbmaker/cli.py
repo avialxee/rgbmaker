@@ -51,9 +51,9 @@ def cli():
     freq=args.freq_list or "150, 1420"
     #SPEC_INDEX=args.spec_index
     if S:
-        list(map(float, S.split(',')))
-        list(map(float, S_e.split(',')))
-        list(map(float, freq.split(',')))
+        S=list(map(float, S.split(',')))
+        S_e=list(map(float, S_e.split(',')))
+        freq=list(map(float, freq.split(',')))
         #print(S)
         #print(type(S[0]))
         sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
