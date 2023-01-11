@@ -47,11 +47,12 @@ def cli():
     pixels=args.pixels or 480
     annot = str(args.annot or 'True').lower()=='true'
     S=args.flux_list 
-    S_e=list(map(float, (args.flux_error or "1, 1").split(',')))
+    S_e=args.flux_error
     freq=list(map(float, (args.freq_list or "150, 1420").split(',')))
     #SPEC_INDEX=args.spec_index
     if S:
         list(map(float, S.split(',')))
+        list(map(float, S_e.split(',')))
         #print(S)
         #print(type(S[0]))
         sindex = pl_powerlawsi(S,S_e,freq, kind='png', label="output")
