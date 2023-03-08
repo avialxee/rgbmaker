@@ -22,7 +22,7 @@ setup(
                  ],
     long_description=desc,
     long_description_content_type = "text/markdown",
-    install_requires=["astropy>=4.2.1", "matplotlib>= 3.4.2",
+    install_requires=["astropy>=4.2.1", "matplotlib>= 3.4.2, <=3.5.3",
                       "regions", "numpy>= 1.20.3", "astroquery","requests"
                       ],
     extras_require = {
