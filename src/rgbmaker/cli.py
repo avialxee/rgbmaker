@@ -13,14 +13,13 @@ def cli_ASCII():
        __/ |                                    
       |___/                                     
 
-
+A python package which communicates to different 
+astronomical services and fetches fits and numerical data
         """
         return ascii_rgbmaker
 
 
-parser = argparse.ArgumentParser('rgbmaker',description="""A python package which communicates to different 
-astronomical services and fetches fits and numerical data.
-""", formatter_class=argparse.RawDescriptionHelpFormatter)
+parser = argparse.ArgumentParser('rgbmaker',description=cli_ASCII(), formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('-p', '--position', type=str, help="""(Required)
         The object name or the coordinates of the object in the FK5 (J2000) system. 
         Ex: "14 09 48.86 -03 02 32.6", M87, NGC1243, without quotes.""")
@@ -54,6 +53,7 @@ parser.add_argument('-freq', '--freq_list', type=str, help="""(Optional) (Defaul
 args=parser.parse_args()
 
 def cli():
+    
     position=args.position or ""
     radius=args.radius or float(0.12)
     imagesopt=args.imagesopt or 2
