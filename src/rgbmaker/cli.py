@@ -1,6 +1,23 @@
 from rgbmaker.fetch import query
 from rgbmaker.imgplt import pl_powerlawsi
 import argparse
+
+def cli_ASCII():
+        ascii_rgbmaker="""
+            _                     _             
+           | |                   | |            
+  _ __ __ _| |__  _ __ ___   __ _| | _____ _ __ 
+ | '__/ _` | '_ \| '_ ` _ \ / _` | |/ / _ \ '__|
+ | | | (_| | |_) | | | | | | (_| |   <  __/ |   
+ |_|  \__, |_.__/|_| |_| |_|\__,_|_|\_\___|_|   
+       __/ |                                    
+      |___/                                     
+
+
+        """
+        return ascii_rgbmaker
+
+
 parser = argparse.ArgumentParser('rgbmaker',description="""A python package which communicates to different 
 astronomical services and fetches fits and numerical data.
 """, formatter_class=argparse.RawDescriptionHelpFormatter)
