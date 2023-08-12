@@ -27,7 +27,7 @@
     code                    :   https://github.com/avialxee/rgbmaker/commits?author=Ninisha224
 
 ## PROJECT
-    Name                    :   RAD@home India Citizen Science Research Collaboratory
+    Name                    :   RGBMaker for RAD@home India Citizen Science Research Collaboratory
     Dates                   :   2013 ---> Present
     PI                      :   Dr Ananda Hota
     PI website              :   https://radathomeindia.org/anandahota
