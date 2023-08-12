@@ -1,3 +1,17 @@
+```ASCII
+            _                     _             
+           | |                   | |            
+  _ __ __ _| |__  _ __ ___   __ _| | _____ _ __ 
+ | '__/ _` | '_ \| '_ ` _ \ / _` | |/ / _ \ '__|
+ | | | (_| | |_) | | | | | | (_| |   <  __/ |   
+ |_|  \__, |_.__/|_| |_| |_|\__,_|_|\_\___|_|   
+       __/ |                                    
+      |___/                                     
+
+```
+
+
+
 # rgbmaker  [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)   [![PyPI - Python Version](https://img.shields.io/pypi/v/rgbmaker.svg)](https://pypi.org/project/rgbmaker/) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/rgbmaker)](https://pypi.org/project/rgbmaker/) [![Documentation Status](https://readthedocs.org/projects/rgbmaker/badge/?version=latest)](https://rgbmaker.readthedocs.io/en/latest/?badge=latest) ![PyPI - Downloads](https://img.shields.io/pypi/dm/rgbmaker)
 A python package which communicates to different astronomical services and fetches fits and numerical data.
 
@@ -14,6 +28,15 @@ $ pip install rgbmaker
 # Usage
 ```bash
 $ rgbmaker -h
+#            _                     _             
+#           | |                   | |            
+#  _ __ __ _| |__  _ __ ___   __ _| | _____ _ __ 
+# | '__/ _` | '_ \| '_ ` _ \ / _` | |/ / _ \ '__|
+# | | | (_| | |_) | | | | | | (_| |   <  __/ |   
+# |_|  \__, |_.__/|_| |_| |_|\__,_|_|\_\___|_|   
+#       __/ |                                    
+#      |___/                                     
+#
 usage: rgbmaker [-h] [-p POSITION] [-r RADIUS] [-i IMAGESOPT] [-n NAME] [-a ARCHIVES] [-k KIND] [-s SPIDX_FILE]
                 [-px PIXELS] [-A ANNOT]
 
