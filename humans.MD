@@ -19,8 +19,8 @@
 
     Developer + Maintainer  :   Avinash Kumar @avialxee
     Dates                   :   26/Jan/2021 ---> Present
-    code                    :   https://github.dev/avialxee/rgbmaker
-                                https://github.dev/avialxee/rgbmaker-web
+    code                    :   https://github.com/avialxee/rgbmaker
+                                https://github.com/avialxee/rgbmaker-web
 
     Developer               :   Ninisha Manaswini @Ninisha224
     Dates                   :   01/Jan/2023 - 11/Jan/2023
