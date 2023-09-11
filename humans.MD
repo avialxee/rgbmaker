@@ -31,7 +31,7 @@
     Dates                   :   2013 ---> Present
     PI                      :   Dr Ananda Hota
     PI website              :   https://radathomeindia.org/anandahota
-    Publication             :   TBD soon
+    Publication             :   DOI: https://doi.org/10.1017/S1743921323000674
     Website                 :   https://radathomeindia.org/rgbmaker
     Facebook Group          :   https://fb.com/groups/RADatHome
     Facebook Page           :   https://fb.com/RADatHomeIndia
