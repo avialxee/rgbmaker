@@ -1,6 +1,8 @@
 # rgbmaker  [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)   [![PyPI - Python Version](https://img.shields.io/pypi/v/rgbmaker.svg)](https://pypi.org/project/rgbmaker/) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/rgbmaker)](https://pypi.org/project/rgbmaker/) [![Documentation Status](https://readthedocs.org/projects/rgbmaker/badge/?version=latest)](https://rgbmaker.readthedocs.io/en/latest/?badge=latest) ![PyPI - Downloads](https://img.shields.io/pypi/dm/rgbmaker)
 A python package which communicates to different astronomical services and fetches fits and numerical data.
 
+DOI: [https://doi.org/10.1017/S1743921323000674](DOI: https://doi.org/10.1017/S1743921323000674)
+
 See Also : [Humans](humans.MD)
 
 
