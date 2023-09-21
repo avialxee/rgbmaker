@@ -7,7 +7,7 @@ DOI: [https://doi.org/10.1017/S1743921323000674](https://doi.org/10.1017/S174392
 # Developement
 
 
-RGBMaker was initially a [jupyter notebook](), work started by [Avinash Ck](@Jack3690) and later through this repo we helped continue the work making an elaborate [project](https://github.com/avialxee/rgbmaker-web) (with a [web tool](https://radathomeindia.org/rgbmaker)) involving Avinash Kumar with Avinash Ck's and Ninisha's help for RAD@home Astronomy Colloboratory India for citizen science research(PI :  Dr [Ananda Hota](https://radathomeindia.org/anandahota)). 
+RGBMaker was initially a [jupyter notebook](https://github.com/Jack3690/RADatHome), work started by [Avinash Ck](@Jack3690) and later through this repo we helped continue the work making an elaborate [project](https://github.com/avialxee/rgbmaker-web) (with a [web tool](https://radathomeindia.org/rgbmaker)) involving Avinash Kumar with Avinash Ck's and Ninisha's help for RAD@home Astronomy Colloboratory India for citizen science research(PI :  Dr [Ananda Hota](https://radathomeindia.org/anandahota)). 
 
 see also : [Humans](humans.MD)
 
