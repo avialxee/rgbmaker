@@ -1,13 +1,16 @@
 # rgbmaker  [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)   [![PyPI - Python Version](https://img.shields.io/pypi/v/rgbmaker.svg)](https://pypi.org/project/rgbmaker/) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/rgbmaker)](https://pypi.org/project/rgbmaker/) [![Documentation Status](https://readthedocs.org/projects/rgbmaker/badge/?version=latest)](https://rgbmaker.readthedocs.io/en/latest/?badge=latest) ![PyPI - Downloads](https://img.shields.io/pypi/dm/rgbmaker)
 A python package which communicates to different astronomical services and fetches fits and numerical data.
 
-DOI: [https://doi.org/10.1017/S1743921323000674](DOI: https://doi.org/10.1017/S1743921323000674)
-
-See Also : [Humans](humans.MD)
-
+DOI: [https://doi.org/10.1017/S1743921323000674](https://doi.org/10.1017/S1743921323000674)
 
 
 # Developement
+
+
+RGBMaker was initially a [jupyter notebook](), work started by [Avinash Ck](@Jack3690) and later through this repo we helped continue the work making an elaborate [project](https://github.com/avialxee/rgbmaker-web) (with a [web tool](https://radathomeindia.org/rgbmaker)) involving Avinash Kumar with Avinash Ck's and Ninisha's help for RAD@home Astronomy Colloboratory India for citizen science research(PI :  Dr [Ananda Hota](https://radathomeindia.org/anandahota)). 
+
+see also : [Humans](humans.MD)
+
 ```bash
 $ pip install -e .[dev]
 ```
