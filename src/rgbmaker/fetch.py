@@ -111,7 +111,6 @@ def query(name="", position="", radius=float(0.12), archives=1,
     level_contour=4
 
     if fetch_q.server_down:
-        fetch_q.status, fetch_q.info = 'warning', 'SkyView is down!'
         return fetch_q.throw_output()
 
     else:

@@ -63,13 +63,16 @@ class RGBMaker:
         self.name, self.c, self.r = self._inp_sanitize()
         if self.c is not None :
             self._getNVAS(self.archives)
+            
             try:
                 hdu_d_list, error = self.getdd(_input_svys, _input_sampler)
+                if error:self.otext.append(error)
             except:
                 if self.c :
                     if self.imagesopt == 1 or self.imagesopt == 2 or self.imagesopt == 3:
-                        self.status, self.info = 'info', 'error fetching data from skyview'
                         self.server_down=True
+                        self.status, self.info = 'info', 'error fetching data from SkyView, contact developer'
+                        
                     else:
                         self.status, self.info = 'info', 'No images to return'
                 return self.throw_output()
@@ -157,7 +160,7 @@ class RGBMaker:
         _imgls, _error = self._run_imgl(
             self.c, self.r, input_svys, sampler)
         for i in range(len(_imgls)):
-            if _imgls[i] == 0:
+            if _imgls[i] == 0 or len(_imgls[i])==0:
                 _imglt.insert(
                     i, [np.zeros((int(self.px), int(self.px))), None])
             else:
@@ -190,7 +193,7 @@ class RGBMaker:
         returns a list of hdul and errors requested by getdd.
         """
         result = [0]*len(_in_svys)
-        imglt, _error = [None]*2
+        imglt, _error = None, {"survey_err":[],"exception":[]}
         _sam = sam
         try:
             #print(_in_svys)
@@ -198,10 +201,11 @@ class RGBMaker:
                 for ind in range(len(_in_svys)):
                     imglt = self._get_imgl_pool(
                         [c, _in_svys[ind], r, result, ind,  _sam[ind]])
-            except:
-                _error = "problem with survey: " + str(_in_svys)
+                    if len(imglt[ind])==0:_error["survey_err"].append(str(_in_svys[ind]))
+            except Exception as e:
+                _error["exception"].append(f"{str(e)}")
         except Exception as e:
-            _error = e
+            _error["exception"].append(f"{str(e)}")
         return imglt, _error
 
     def _get_imgl_pool(self, cals):
@@ -218,7 +222,8 @@ class RGBMaker:
             queue[ind] = imglr
         except requests.exceptions.ConnectionError as e:
             self.server_down = True
-            self.info = e
+            self.status, self.info = 'warning', 'SkyView is down!'
+            
         except Exception as e:
             # --- if file not found/doesn't exist. Program will continue.
             print("{} not found ".format(svy))
