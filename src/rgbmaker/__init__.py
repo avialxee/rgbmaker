@@ -71,7 +71,7 @@ class RGBMaker:
                 if self.c :
                     if self.imagesopt == 1 or self.imagesopt == 2 or self.imagesopt == 3:
                         self.server_down=True
-                        self.status, self.info = 'info', 'error fetching data from SkyView, contact developer'
+                        self.status, self.info = 'info', 'error fetching data from SkyView'
                         
                     else:
                         self.status, self.info = 'info', 'No images to return'
