@@ -1,4 +1,3 @@
 rgbmaker
 requests
 jupyter-sphinx
-sphinx_rtx_theme
