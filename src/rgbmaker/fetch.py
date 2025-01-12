@@ -11,6 +11,8 @@ from matplotlib.collections import PatchCollection
 import matplotlib.patches as mpatches
 import numpy as np
 
+from scipy.ndimage import gaussian_filter
+
 import urllib
 
 from time import perf_counter
@@ -284,7 +286,8 @@ def query(name="", position="", radius=float(0.12), archives=1,
                 
                 ax2.contour(nvss, lvlcn, colors='cyan')
                 ax2.contour(tgss, lvlct, colors='magenta')
-                ax2.contour(first, lvlcf, colors='yellow')
+                smooth_first = gaussian_filter(first, sigma=1)
+                ax2.contour(smooth_first, lvlcf, colors='yellow')
 
                 leg1 = mpatches.Patch(color='cyan', label='NVSS')
                 leg2 = mpatches.Patch(color='magenta', label='TGSS')
