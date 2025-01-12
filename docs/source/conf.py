@@ -24,7 +24,7 @@ copyright = '2025, avialxee'
 author = 'avialxee'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.5.6'
+release = 'v0.0.5.6'
 
 
 # -- General configuration ---------------------------------------------------
