@@ -286,7 +286,9 @@ def query(name="", position="", radius=float(0.12), archives=1,
                 
                 ax2.contour(nvss, lvlcn, colors='cyan')
                 ax2.contour(tgss, lvlct, colors='magenta')
-                smooth_first = gaussian_filter(first, sigma=1)
+                smooth_first        =   first
+                if radius<0.12:
+                    smooth_first    =   gaussian_filter(first, sigma=2)
                 ax2.contour(smooth_first, lvlcf, colors='yellow')
 
                 leg1 = mpatches.Patch(color='cyan', label='NVSS')
